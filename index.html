@@ -227,6 +227,7 @@
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
     .reveal-delay-4 { transition-delay: 0.4s; }
 
     @media (prefers-reduced-motion: reduce) {
@@ -384,6 +385,15 @@
     .hero__title span {
       margin: 0 12px;
       color: var(--fg-subtle);
+    }
+
+    .hero__subtitle {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--fg-subtle);
+      letter-spacing: 0.03em;
+      margin-top: 16px;
     }
 
     .hero__scroll {
@@ -926,6 +936,7 @@
     <div class="nav__inner">
       <a href="#hero" class="nav__logo">纪洁敏<span>JM</span></a>
       <ul class="nav__links">
+        <li><a href="#about">关于</a></li>
         <li><a href="#projects">作品</a></li>
         <li><a href="#experience">经历</a></li>
         <li><a href="#skills">技能</a></li>
@@ -951,7 +962,10 @@
       <h1 class="hero__name-en reveal">JIE MIN JI</h1>
       <p class="hero__name-cn reveal reveal-delay-1">纪 洁 敏</p>
       <p class="hero__title reveal reveal-delay-2">
-        视觉设计师<span>/</span>UI设计师
+        产品与视觉设计师<span>/</span>品牌运营
+      </p>
+      <p class="hero__subtitle reveal reveal-delay-3">
+        深圳技术大学 · 艺术与科技 · GPA 4.01 / 专业前2%
       </p>
     </div>
     <div class="hero__scroll">
@@ -972,8 +986,9 @@
         </div>
         <div class="about__divider"></div>
         <div class="about__text reveal reveal-delay-2">
-          <p>我是纪洁敏，一名专注<strong>视觉设计</strong>与<strong>UI设计</strong>的设计师。从品牌物料到数字界面，从平面印刷到AIGC创意实验，我始终追求兼具功能性与美感的解决方案。</p>
-          <p>目前就职于<strong>卓驭科技</strong>，负责企业品牌视觉体系搭建、活动物料设计、组织文化项目及校招礼盒包装设计。此前在社媒运营领域积累了丰富的内容策划与用户洞察经验。</p>
+          <p>我是纪洁敏，<strong>深圳技术大学</strong>艺术与科技专业2026届本科生，GPA 4.01（专业前2%），累计获得<strong>5次奖学金</strong>，获评<strong>优秀毕业生</strong>。</p>
+          <p>专业方向覆盖品牌视觉、产品设计与AIGC创意。先后在<strong>TCL集团</strong>（品牌运营/企业文化）、<strong>卓驭科技</strong>（大疆车载·雇主品牌运营）及<strong>阿里系机器人科技公司</strong>（产品与视觉设计）完成三段实习，积累了从品牌物料到社媒运营、从活动策划到供应链管理的完整实战经验。</p>
+          <p>擅长使用 Midjourney、Stable Diffusion、ChatGPT 等 AIGC 工具赋能设计流程，精通 PS、AI、AE、Blender、Zbrush 等设计软件。</p>
         </div>
       </div>
     </div>
@@ -1116,23 +1131,30 @@
 
         <div class="timeline__item reveal">
           <div class="timeline__dot"></div>
-          <div class="timeline__period">2022.09 — 2024.11</div>
-          <h3 class="timeline__title">设计学习与校园实践</h3>
-          <p class="timeline__desc">在校期间探索视觉设计、品牌设计、时尚穿搭等多元方向，完成从基础技能到项目实践的积累，逐步建立个人设计方法论。</p>
+          <div class="timeline__period">2022.09 — 2026.07</div>
+          <h3 class="timeline__title">深圳技术大学 · 艺术与科技（学士）</h3>
+          <p class="timeline__desc">GPA 4.01，专业排名前2%。累计获得奖学金5次，获评优秀毕业生。专业方向涵盖品牌视觉设计、AIGC创意、VR交互与时尚穿搭，建立跨领域设计能力体系。</p>
+        </div>
+
+        <div class="timeline__item reveal">
+          <div class="timeline__dot"></div>
+          <div class="timeline__period">2025.02 — 2025.07</div>
+          <h3 class="timeline__title">TCL集团 · 品牌运营/企业文化 实习</h3>
+          <p class="timeline__desc">独立完成公司主题物料设计，对接15家供应商的材质与工艺，控制成本落地5款周边产品（笔芯、背包等），在保证品质前提下单件成本降低约12%。参与策划200人规模团建活动，负责全部宣传物料设计与现场协调。撰写发布8篇活动文案，平均阅读量300+。</p>
         </div>
 
         <div class="timeline__item reveal">
           <div class="timeline__dot"></div>
           <div class="timeline__period">2025.07 — 2025.11</div>
-          <h3 class="timeline__title">社媒运营实践</h3>
-          <p class="timeline__desc">独立运营小红书账号，从0到1积累2800+粉丝。通过内容策划、数据分析与用户反馈持续优化内容策略，深入理解传播逻辑与用户需求。</p>
+          <h3 class="timeline__title">卓驭科技（大疆车载）· 雇主品牌运营 实习</h3>
+          <p class="timeline__desc">负责品牌视觉体系统筹设计，涵盖18条产品线视觉物料。运营小红书、公众号、脉脉等多平台雇主品牌账号，输出差异化内容策略。主导校招礼盒创意项目，设计长图、邀请函、展架等全链路物料，支持清华双选会、慕尼黑展会等重点品牌曝光活动。</p>
         </div>
 
         <div class="timeline__item reveal">
           <div class="timeline__dot"></div>
           <div class="timeline__period">2026.04 — 至今</div>
-          <h3 class="timeline__title">卓驭科技 · 设计岗</h3>
-          <p class="timeline__desc">负责企业品牌物料设计、活动视觉（含海外顶会）、邀请函、校招礼盒包装及组织文化项目，参与从需求分析到设计交付的全流程。</p>
+          <h3 class="timeline__title">阿里系机器人科技公司 · 产品与视觉设计 实习</h3>
+          <p class="timeline__desc">独立完成全案品牌视觉设计，覆盖线上/线下全场景触点。负责多平台内容运营（小红书、公众号、视频号），策划图文排版、撰写爆款互动内容。对接战略部门3条业务线，输出招聘/文化活动邀请函及PPT视觉方案，确保品牌视觉规范统一，累计交付20+设计方案。</p>
         </div>
 
       </div>
@@ -1152,35 +1174,40 @@
         <div class="reveal">
           <h4 class="skills__group-title">设计能力</h4>
           <div class="skills__tags">
-            <span class="skill-tag">视觉设计</span>
-            <span class="skill-tag">UI / UX 设计</span>
-            <span class="skill-tag">品牌设计</span>
-            <span class="skill-tag">包装设计</span>
-            <span class="skill-tag">印刷品设计</span>
-            <span class="skill-tag">社媒视觉</span>
+            <span class="skill-tag">品牌视觉设计</span>
+            <span class="skill-tag">产品与包装设计</span>
+            <span class="skill-tag">印刷品与物料设计</span>
+            <span class="skill-tag">社媒内容设计</span>
+            <span class="skill-tag">活动策划执行</span>
+            <span class="skill-tag">内容策划与文案</span>
           </div>
         </div>
 
         <div class="reveal reveal-delay-1">
           <h4 class="skills__group-title">工具</h4>
           <div class="skills__tags">
-            <span class="skill-tag">Figma</span>
-            <span class="skill-tag">Blender</span>
-            <span class="skill-tag">Unity</span>
-            <span class="skill-tag">ChatGPT</span>
             <span class="skill-tag">Photoshop</span>
             <span class="skill-tag">Illustrator</span>
+            <span class="skill-tag">After Effects</span>
+            <span class="skill-tag">Blender</span>
+            <span class="skill-tag">Zbrush</span>
+            <span class="skill-tag">Midjourney</span>
+            <span class="skill-tag">Stable Diffusion</span>
+            <span class="skill-tag">ChatGPT</span>
+            <span class="skill-tag">剪映</span>
+            <span class="skill-tag">MadMapper</span>
           </div>
         </div>
 
         <div class="reveal reveal-delay-2">
-          <h4 class="skills__group-title">创意方向</h4>
+          <h4 class="skills__group-title">平台与方向</h4>
           <div class="skills__tags">
+            <span class="skill-tag">小红书运营</span>
+            <span class="skill-tag">公众号运营</span>
+            <span class="skill-tag">视频号运营</span>
             <span class="skill-tag">AIGC 工作流</span>
-            <span class="skill-tag">3D 建模</span>
-            <span class="skill-tag">VR 交互</span>
-            <span class="skill-tag">时尚造型</span>
-            <span class="skill-tag">内容策划</span>
+            <span class="skill-tag">供应商管理</span>
+            <span class="skill-tag">成本控制</span>
           </div>
         </div>
 
@@ -1198,13 +1225,16 @@
       </div>
       <h2 class="contact__headline reveal reveal-delay-1">一起创造<em>好设计</em></h2>
       <div class="reveal reveal-delay-2">
-        <a href="mailto:jiemin.ji@example.com" class="contact__email">
+        <a href="mailto:1207121832@qq.com" class="contact__email">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <rect x="2" y="4" width="20" height="16" rx="2"/>
             <path d="M22 4L12 13L2 4"/>
           </svg>
-          jiemin.ji@example.com
+          1207121832@qq.com
         </a>
+      </div>
+      <div class="reveal reveal-delay-2" style="margin-top: 20px;">
+        <span class="t-small" style="color: var(--fg-muted);">电话 / 微信：15323725239</span>
       </div>
       <div class="contact__socials reveal reveal-delay-3">
         <button class="contact__social-link" aria-label="小红书" onclick="void(0)">
