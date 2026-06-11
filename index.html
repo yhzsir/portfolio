@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>纪洁敏 | 个人作品集</title>
+  <meta name="description" content="纪洁敏 — 视觉设计师 / UI设计师，专注品牌视觉、UI设计、AIGC创意与包装设计">
+  <meta name="canvas:aspect-ratio" content="16:9">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;450;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ===== Custom Properties ===== */
+    :root {
+      --seed-bg: #0B0B0B;
+      --seed-fg: #EDEDEA;
+      --seed-primary: #4A7C6F;
+      --seed-accent: #C4956A;
+      --seed-surface: #141414;
+      --seed-radius: 4;
+
+      --bg: var(--seed-bg);
+      --surface: var(--seed-surface);
+      --surface-elevated: #1C1C1C;
+      --fg: var(--seed-fg);
+      --fg-muted: #7A7A7A;
+      --fg-subtle: #4A4A4A;
+      --border: rgba(255,255,255,0.08);
+      --border-strong: rgba(255,255,255,0.14);
+      --accent: var(--seed-primary);
+      --accent-warm: var(--seed-accent);
+
+      --font-display: 'Playfair Display', 'Noto Serif SC', 'Source Han Serif SC', Georgia, serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --space-xl: 48px;
+      --space-2xl: 80px;
+      --space-3xl: 120px;
+      --space-section: 140px;
+
+      --radius: calc(var(--seed-radius) * 1px);
+      --radius-lg: calc(var(--seed-radius) * 2px);
+
+      --nav-height: 64px;
+      --content-max: 1200px;
+      --content-narrow: 960px;
+
+      /* Artwork tokens — unique hues per project card */
+      --art-b1:#1a3a5c;--art-b2:#2d6a9f;
+      --art-p1:#2a1a4a;--art-p2:#5c3d8f;
+      --art-n1:#1a1a2e;--art-n2:#2d2d5e;
+      --art-t1:#0a2a2a;--art-t2:#1a5a5a;
+      --art-g1:#3a2a1a;--art-g2:#8b6914;
+      --art-c1:#1a2a3a;--art-c2:#3a6a8a;
+      --art-m1:#2a1a2a;--art-m2:#5a3a5a;
+      --art-e1:#1a3a2a;--art-e2:#2a7a4a;
+      --art-v1:#0a1a3a;--art-v2:#1a4a8a;--art-v3:#0a2a5a;
+      --art-r1:#3a0a0a;--art-r2:#5a1a1a;--art-r3:#1a0a0a;
+      --art-s1:rgba(255,255,255,0.15);
+      --art-s2:rgba(255,255,255,0.12);
+      --art-s3:rgba(255,255,255,0.10);
+      --art-s4:rgba(255,255,255,0.08);
+      --art-s5:rgba(255,255,255,0.06);
+      --art-s6:rgba(255,255,255,0.04);
+      --art-f1:rgba(255,255,255,0.05);
+      --art-f2:rgba(255,255,255,0.04);
+      --art-f3:rgba(255,255,255,0.03);
+      --art-f4:rgba(255,255,255,0.02);
+    }
+
+    /* ===== Reset ===== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-height);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg);
+      color: var(--fg);
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 400;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    /* ===== Typography ===== */
+    .t-display {
+      font-family: var(--font-display);
+      font-size: clamp(56px, 8vw, 96px);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .t-h1 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .t-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+    }
+
+    .t-h3 {
+      font-family: var(--font-body);
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+
+    .t-body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.6;
+      letter-spacing: 0;
+    }
+
+    .t-small {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: 0.01em;
+    }
+
+    .t-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+    }
+
+    .t-label-lg {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 450;
+      line-height: 1;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+    }
+
+    /* ===== Utilities ===== */
+    .container {
+      width: 100%;
+      max-width: var(--content-max);
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .container--narrow {
+      max-width: var(--content-narrow);
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--fg-subtle);
+    }
+
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      border: none;
+    }
+
+    /* ===== Animations ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    /* ===== Navigation ===== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      padding: 0 40px;
+      transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
+    }
+
+    .nav.scrolled {
+      background-color: rgba(11,11,11,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav__inner {
+      width: 100%;
+      max-width: var(--content-max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav__logo {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--fg);
+    }
+
+    .nav__logo span {
+      color: var(--fg-muted);
+      font-weight: 400;
+      margin-left: 8px;
+      font-size: 12px;
+    }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav__links a {
+      font-size: 13px;
+      font-weight: 450;
+      color: var(--fg-muted);
+      letter-spacing: 0.02em;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav__links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav__links a:hover {
+      color: var(--fg);
+    }
+
+    .nav__links a:hover::after {
+      width: 100%;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      text-align: center;
+      padding: var(--nav-height) 40px 80px;
+    }
+
+    .hero__frame {
+      position: absolute;
+      top: 100px;
+      bottom: 80px;
+      left: 40px;
+      right: 40px;
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      pointer-events: none;
+    }
+
+    .hero__frame::before,
+    .hero__frame::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 1px;
+      height: 100%;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero__name-en {
+      font-family: var(--font-display);
+      font-size: clamp(56px, 9vw, 112px);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--fg);
+      margin-bottom: 16px;
+    }
+
+    .hero__name-cn {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 2.5vw, 28px);
+      font-weight: 400;
+      color: var(--fg-muted);
+      letter-spacing: 0.15em;
+      margin-bottom: 40px;
+    }
+
+    .hero__title {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--fg-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .hero__title span {
+      margin: 0 12px;
+      color: var(--fg-subtle);
+    }
+
+    .hero__scroll {
+      position: absolute;
+      bottom: 48px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero__scroll-text {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--fg-subtle);
+      writing-mode: vertical-rl;
+    }
+
+    .hero__scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--fg-subtle), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.2); }
+    }
+
+    .hero__decoration {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero__decoration--1 {
+      top: 15%;
+      right: 12%;
+      opacity: 0.3;
+    }
+
+    .hero__decoration--2 {
+      bottom: 20%;
+      left: 8%;
+      width: 80px;
+      height: 80px;
+      opacity: 0.2;
+    }
+
+    /* ===== About ===== */
+    .about {
+      padding: var(--space-section) 0;
+    }
+
+    .about__grid {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      gap: 0 64px;
+      align-items: start;
+    }
+
+    .about__divider {
+      width: 1px;
+      height: 100%;
+      min-height: 200px;
+      background: var(--border-strong);
+    }
+
+    .about__quote {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      color: var(--fg);
+      padding-top: 8px;
+    }
+
+    .about__quote::before {
+      content: '\201C';
+      display: block;
+      font-size: 64px;
+      line-height: 0.8;
+      color: var(--accent);
+      margin-bottom: 16px;
+      font-style: normal;
+    }
+
+    .about__text {
+      padding-top: 12px;
+    }
+
+    .about__text p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--fg-muted);
+      margin-bottom: 20px;
+      max-width: 48ch;
+    }
+
+    .about__text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about__text strong {
+      color: var(--fg);
+      font-weight: 500;
+    }
+
+    /* ===== Projects ===== */
+    .projects {
+      padding: var(--space-section) 0;
+    }
+
+    .projects__header {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+
+    .projects__count {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-style: italic;
+      color: var(--fg-subtle);
+    }
+
+    .projects__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .project-card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color 0.4s ease;
+    }
+
+    .project-card:hover {
+      border-color: var(--border-strong);
+    }
+
+    .project-card__artwork {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .project-card:hover .project-card__artwork {
+      transform: scale(1.03);
+    }
+
+    .project-card__artwork svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .project-card__body {
+      padding: 24px 28px 28px;
+    }
+
+    .project-card__category {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(74,124,111,0.3);
+      border-radius: 100px;
+      padding: 4px 12px;
+      margin-bottom: 12px;
+    }
+
+    .project-card__title {
+      font-family: var(--font-body);
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.3;
+      color: var(--fg);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .project-card__desc {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--fg-muted);
+      max-width: 52ch;
+    }
+
+    /* Project card artwork styles — colors consumed from :root artwork tokens */
+    .artwork-1 { background: linear-gradient(135deg, var(--art-b1) 0%, var(--art-b2) 50%, var(--art-b1) 100%); }
+    .artwork-2 { background: linear-gradient(135deg, var(--art-p1) 0%, var(--art-p2) 50%, var(--art-p1) 100%); }
+    .artwork-3 { background: linear-gradient(135deg, var(--art-n1) 0%, var(--art-n2) 50%, var(--art-n1) 100%); }
+    .artwork-4 { background: linear-gradient(135deg, var(--art-t1) 0%, var(--art-t2) 50%, var(--art-t1) 100%); }
+    .artwork-5 { background: linear-gradient(135deg, var(--art-g1) 0%, var(--art-g2) 50%, var(--art-g1) 100%); }
+    .artwork-6 { background: linear-gradient(135deg, var(--art-c1) 0%, var(--art-c2) 50%, var(--art-c1) 100%); }
+    .artwork-7 { background: linear-gradient(135deg, var(--art-m1) 0%, var(--art-m2) 40%, var(--art-m1) 100%); }
+    .artwork-8 { background: linear-gradient(135deg, var(--art-e1) 0%, var(--art-e2) 50%, var(--art-e1) 100%); }
+    .artwork-9 { background: linear-gradient(135deg, var(--art-v1) 0%, var(--art-v2) 40%, var(--art-v3) 100%); }
+    .artwork-10 { background: linear-gradient(135deg, var(--art-r1) 0%, var(--art-r2) 50%, var(--art-r3) 100%); }
+
+    /* ===== Timeline ===== */
+    .timeline-section {
+      padding: var(--space-section) 0;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 48px;
+      margin-top: 56px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: var(--border-strong);
+    }
+
+    .timeline__item {
+      position: relative;
+      padding-bottom: 56px;
+    }
+
+    .timeline__item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline__dot {
+      position: absolute;
+      left: -44px;
+      top: 6px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      background: var(--bg);
+      z-index: 1;
+    }
+
+    .timeline__dot::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .timeline__period {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-style: italic;
+      color: var(--accent-warm);
+      margin-bottom: 8px;
+      letter-spacing: 0.01em;
+    }
+
+    .timeline__title {
+      font-family: var(--font-body);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--fg);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .timeline__desc {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--fg-muted);
+      max-width: 56ch;
+    }
+
+    /* ===== Skills ===== */
+    .skills {
+      padding: var(--space-section) 0;
+    }
+
+    .skills__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 48px;
+      margin-top: 56px;
+    }
+
+    .skills__group-title {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--fg);
+      letter-spacing: 0.02em;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skills__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-tag {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--fg-muted);
+      border: 1px solid var(--border-strong);
+      border-radius: 100px;
+      padding: 7px 18px;
+      transition: border-color 0.3s ease, color 0.3s ease;
+      letter-spacing: 0.01em;
+    }
+
+    .skill-tag:hover {
+      border-color: var(--accent);
+      color: var(--fg);
+    }
+
+    /* ===== Contact ===== */
+    .contact {
+      padding: var(--space-section) 0;
+      text-align: center;
+    }
+
+    .contact__headline {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--fg);
+      margin-bottom: 32px;
+    }
+
+    .contact__headline em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .contact__email {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 16px;
+      font-weight: 450;
+      color: var(--fg);
+      border: 1px solid var(--border-strong);
+      border-radius: 100px;
+      padding: 16px 36px;
+      margin-bottom: 48px;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+      letter-spacing: 0.01em;
+    }
+
+    .contact__email:hover {
+      border-color: var(--accent);
+      background: rgba(74,124,111,0.08);
+    }
+
+    .contact__email svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.6;
+    }
+
+    .contact__socials {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 8px;
+    }
+
+    .contact__social-link {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+      cursor: pointer;
+      background: none;
+      font: inherit;
+      padding: 0;
+    }
+
+    .contact__social-link:hover {
+      border-color: var(--accent);
+      background: rgba(74,124,111,0.08);
+    }
+
+    .contact__social-link svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--fg-muted);
+      fill: none;
+      stroke-width: 1.6;
+      transition: stroke 0.3s ease;
+    }
+
+    .contact__social-link:hover svg {
+      stroke: var(--fg);
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer__text {
+      font-size: 12px;
+      color: var(--fg-subtle);
+      letter-spacing: 0.02em;
+    }
+
+    .footer__back-top {
+      font-size: 12px;
+      color: var(--fg-subtle);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: var(--font-body);
+    }
+
+    .footer__back-top:hover {
+      color: var(--fg);
+    }
+
+    /* ===== Responsive ===== */
+
+    /* ===== SVG Artwork Tokens (consumed by project card illustrations) ===== */
+    .af1{fill:var(--art-f1)}.af2{fill:var(--art-f2)}.af3{fill:var(--art-f3)}.af4{fill:var(--art-f4)}
+    .af0{fill:none}
+    .as1{stroke:var(--art-s1);fill:none;stroke-width:1}
+    .as2{stroke:var(--art-s2);fill:none;stroke-width:1}
+    .as3{stroke:var(--art-s3);fill:none;stroke-width:1}
+    .as4{stroke:var(--art-s4);fill:none;stroke-width:1}
+    .as5{stroke:var(--art-s5);fill:none;stroke-width:1}
+    .as6{stroke:var(--art-s6);fill:none;stroke-width:1}
+    .af5{fill:var(--art-s1)}.af6{fill:var(--art-s2)}.af7{fill:var(--art-s3)}
+    .af8{fill:var(--art-s4)}.af9{fill:var(--art-s5)}.af10{fill:var(--art-s6)}
+    .aline{stroke:var(--art-s4);fill:none;stroke-width:1}
+    .aline2{stroke:var(--art-s5);fill:none;stroke-width:1}
+    .aline3{stroke:var(--art-s6);fill:none;stroke-width:1}
+
+    @media (max-width: 900px) {
+      .container { padding: 0 24px; }
+      .nav { padding: 0 24px; }
+      :root { --space-section: 96px; }
+
+      .about__grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .about__divider { display: none; }
+
+      .projects__grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .skills__grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .hero__frame {
+        left: 24px;
+        right: 24px;
+      }
+
+      .nav__links { gap: 20px; }
+      .nav__links a { font-size: 12px; }
+
+      .footer__inner {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      :root { --space-section: 72px; }
+      .nav__logo span { display: none; }
+
+      .hero__name-en {
+        font-size: clamp(40px, 12vw, 64px);
+      }
+
+      .hero__title span {
+        display: none;
+      }
+
+      .hero__title::after {
+        content: '';
+      }
+
+      .contact__email {
+        padding: 14px 24px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Navigation ===== -->
+  <nav class="nav" id="nav" data-component="nav">
+    <div class="nav__inner">
+      <a href="#hero" class="nav__logo">纪洁敏<span>JM</span></a>
+      <ul class="nav__links">
+        <li><a href="#projects">作品</a></li>
+        <li><a href="#experience">经历</a></li>
+        <li><a href="#skills">技能</a></li>
+        <li><a href="#contact">联系</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== Main Content ===== -->
+  <main data-component="page-main">
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="hero" data-component="hero">
+    <div class="hero__frame"></div>
+    <svg class="hero__decoration hero__decoration--1" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="60" cy="60" r="59" class="as5"/>
+      <circle cx="60" cy="60" r="40" class="as6"/>
+    </svg>
+    <svg class="hero__decoration hero__decoration--2" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="1" y="1" width="78" height="78" rx="39" class="as6"/>
+    </svg>
+    <div class="hero__content">
+      <h1 class="hero__name-en reveal">JIE MIN JI</h1>
+      <p class="hero__name-cn reveal reveal-delay-1">纪 洁 敏</p>
+      <p class="hero__title reveal reveal-delay-2">
+        视觉设计师<span>/</span>UI设计师
+      </p>
+    </div>
+    <div class="hero__scroll">
+      <span class="hero__scroll-text">Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ===== About ===== -->
+  <section class="about" id="about" data-component="about">
+    <div class="container container--narrow">
+      <div class="section-label reveal">
+        <span class="t-label">关于 / About</span>
+      </div>
+      <div class="about__grid">
+        <div class="about__quote reveal reveal-delay-1">
+          用视觉语言连接品牌与用户，<br>在每一个设计细节中寻找秩序与美感。
+        </div>
+        <div class="about__divider"></div>
+        <div class="about__text reveal reveal-delay-2">
+          <p>我是纪洁敏，一名专注<strong>视觉设计</strong>与<strong>UI设计</strong>的设计师。从品牌物料到数字界面，从平面印刷到AIGC创意实验，我始终追求兼具功能性与美感的解决方案。</p>
+          <p>目前就职于<strong>卓驭科技</strong>，负责企业品牌视觉体系搭建、活动物料设计、组织文化项目及校招礼盒包装设计。此前在社媒运营领域积累了丰富的内容策划与用户洞察经验。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="section-divider"></div>
+
+  <!-- ===== Projects ===== -->
+  <section class="projects" id="projects" data-component="projects">
+    <div class="container">
+      <div class="section-label reveal">
+        <span class="t-label">精选项目 / Selected Works</span>
+        <span class="projects__count">10 projects</span>
+      </div>
+      <div class="projects__grid">
+
+        <article class="project-card reveal" data-component="project-card">
+          <div class="project-card__artwork artwork-1">
+            <svg viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="480" height="300" fill="url(#g1)"/>
+              <defs><linearGradient id="g1" x1="0" y1="0" x2="480" y2="300"><stop offset="0%" stop-color="#1a3a5c"/><stop offset="50%" stop-color="#2d6a9f"/><stop offset="100%" stop-color="#1a3a5c"/></linearGradient></defs>
+              <rect x="40" y="40" width="180" height="100" rx="4" stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="rgba(255,255,255,0.04)"/>
+              <rect x="60" y="60" width="100" height="8" rx="4" fill="rgba(255,255,255,0.12)"/>
+              <rect x="60" y="80" width="140" height="6" rx="3" fill="rgba(255,255,255,0.08)"/>
+              <rect x="60" y="100" width="80" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+              <rect x="260" y="60" width="180" height="180" rx="4" stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="rgba(255,255,255,0.03)"/>
+              <circle cx="350" cy="150" r="30" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="rgba(255,255,255,0.05)"/>
+              <rect x="40" y="180" width="180" height="80" rx="4" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="rgba(255,255,255,0.03)"/>
+              <line x1="60" y1="200" x2="200" y2="200" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+              <line x1="60" y1="220" x2="170" y2="220" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <line x1="60" y1="240" x2="140" y2="240" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+            </svg>
+          </div>
+          <div class="project-card__body">
+            <span class="project-card__category">品牌物料</span>
+            <h3 class="project-card__title">自变量物料设计</h3>
+            <p class="project-card__desc">入职报屏、邮件Banner及KT指引等全套入职物料视觉体系，涵盖新人引导流程的完整触点设计。</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal reveal-delay-1" data-component="project-card">
+          <div class="project-card__artwork artwork-2">
+            <svg viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="480" height="300" fill="url(#g2)"/>
+              <defs><linearGradient id="g2" x1="0" y1="0" x2="480" y2="300"><stop offset="0%" stop-color="#2a1a4a"/><stop offset="50%" stop-color="#5c3d8f"/><stop offset="100%" stop-color="#2a1a4a"/></linearGradient></defs>
+              <rect x="60" y="50" width="140" height="200" rx="6" stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="rgba(255,255,255,0.04)" transform="rotate(-3 130 150)"/>
+              <rect x="170" y="45" width="140" height="200" rx="6" stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="rgba(255,255,255,0.03)" transform="rotate(2 240 145)"/>
+              <rect x="290" y="55" width="140" height="200" rx="6" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="rgba(255,255,255,0.03)" transform="rotate(5 360 155)"/>
+              <circle cx="240" cy="150" r="40" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="none"/>
+              <circle cx="240" cy="150" r="60" stroke="rgba(255,255,255,0.04)" stroke-width="1" fill="none"/>
+              <text x="130" y="140" fill="rgba(255,255,255,0.08)" font-family="serif" font-size="24" font-style="italic">CVPR</text>
+            </svg>
+          </div>
+          <div class="project-card__body">
+            <span class="project-card__category">活动视觉</span>
+            <h3 class="project-card__title">海外顶会视觉</h3>
+            <p class="project-card__desc">CVPR 2024 Denver 系列活动卡片、X-Night邀请函及现场物料，覆盖线上推广到线下体验全链路。</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-component="project-card">
+          <div class="project-card__artwork artwork-3">
+            <svg viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="480" height="300" fill="url(#g3)"/>
+              <defs><linearGradient id="g3" x1="0" y1="0" x2="480" y2="300"><stop offset="0%" stop-color="#1a1a2e"/><stop offset="50%" stop-color="#2d2d5e"/><stop offset="100%" stop-color="#1a1a2e"/></linearGradient></defs>
+              <rect x="100" y="50" width="280" height="200" rx="4" stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="rgba(255,255,255,0.03)"/>
+              <line x1="100" y1="100" x2="380" y2="100" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+              <rect x="130" y="70" width="60" height="8" rx="4" fill="rgba(255,255,255,0.1)"/>
+              <rect x="130" y="130" width="200" height="6" rx="3" fill="rgba(255,255,255,0.08)"/>
+              <rect x="130" y="150" width="160" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+              <rect x="130" y="170" width="120" height="6" rx="3" fill="rgba(255,255,255,0.04)"/>
+              <rect x="130" y="210" width="80" height="24" rx="12" stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="rgba(255,255,255,0.05)"/>
+              <polygon points="340,130 380,170 340,170" fill="rgba(255,255,255,0.06)"/>
+              <circle cx="360" cy="80" r="12" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="none"/>
+            </svg>
+          </div>
+          <div class="project-card__body">
+            <span class="project-card__category">邀请函</span>
+            <h3 class="project-card__title">卓驭邀请函设计</h3>
+            <p class="project-card__desc">2025 All Hands Meeting 多风格邀请函及 X COFFEE 触觉专场闭门会视觉系统。</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal reveal-delay-1" data-component="project-card">
+          <div class="project-card__artwork artwork-4">
+            <svg viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="480" height="300" fill="url(#g4)"/>
+              <defs><linearGradient id="g4" x1="0" y1="0" x2="480" y2="300"><stop offset="0%" stop-color="#0a2a2a"/><stop offset="50%" stop-color="#1a5a5a"/><stop offset="100%" stop-color="#0a2a2a"/></linearGradient></defs>
+              <rect x="40" y="40" width="120" height="220" rx="4" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="rgba(255,255,255,0.03)"/>
+              <rect x="180" y="40" width="120" height="220" rx="4" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="rgba(255,255,255,0.03)"/>
+              <rect x="320" y="40" width="120" height="220" rx="4" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="rgba(255,255,255,0.03)"/>
+              <line x1="160" y1="40" x2="180" y2="40" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="4 4"/>
+              <line x1="300" y1="40" x2="320" y2="40" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="4 4"/>
+              <rect x="60" y="70" width="80" height="6" rx="3" fill="rgba(255,255,255,0.1)"/>
+              <rect x="200" y="70" width="80" height="6" rx="3" fill="rgba(255,255,255,0.1)"/>
+              <rect x="340" y="70" width="80" height="6" rx="3" fill="rgba(255,255,255,0.1)"/>
+              <rect x="60" y="100" width="60" height="60" rx="4" fill="rgba(255,255,255,0.05)"/>
+              <rect x="200" y="100" width="60" height="60" rx="4" fill="rgba(255,255,255,0.05)"/>
+              <rect x="340" y="100" width="60" height="60" rx="4" fill="rgba(255,255,255,0.05)"/>
+            </svg>
+          </div>
+          <div class="project-card__body">
+            <span class="project-card__category">印刷品</span>
+            <h3 class="project-card__title">商务折页设计</h3>
+            <p class="project-card__desc">AI产业多面板商务折页，涵盖电商智能客服、AI机器人解决方案及行业应用案例。</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-component="project-card">
+          <div class="project-card__artwork artwork-5">
+            <svg viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="480" height="300" fill="url(#g5)"/>
+              <defs><linearGradient id="g5" x1="0" y1="0" x2="480" y2="300"><stop offset="0%" stop-color="#3a2a1a"/><stop offset="50%" stop-color="#8b6914"/><stop offset="100%" stop-color="#3a2a1a"/></linearGradient></defs>
+              <rect x="140" y="60" width="200" height="180" rx="8" stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="rgba(255,255,255,0.04)"/>
+              <rect x="160" y="80" width="160" height="30" rx="4" fill="rgba(255,255,255,0.06)"/>
+              <line x1="180" y1="95" x2="300" y2="95" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+              <rect x="170" y="130" width="60" height="80" rx="4" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+              <rect x="250" y="130" width="60" height="80" rx="4" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+              <circle cx="240" cy="170" r="20" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>
+              <path d="M232 170 L248 170 M240 162 L240 178" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+              <rect x="80" y="100" width="40" height="120" rx="4" stroke="rgba(255,255,255,0.06)" stroke-width="1" fill="rgba(255,255,255,0.02)"/>
+              <rect x="360" y="100" width="40" height="120" rx="4" stroke="rgba(255,255,255,0.06)" stroke-width="1" fill="rgba(255,255,255,0.02)"/>
+            </svg>
+          </div>
+          <div class="project-card__body">
+            <span class="project-card__category">包装设计</span>
+            <h3 class="project-card__title">校园伴手礼盒</h3>
+            <p class="project-card__desc">SZTU地标元素礼盒设计，从概念到打样的0到1全流程参与，融合校园文化与品牌视觉。</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal reveal-delay-1" data-component="project-card">
+          <div class="project-card__artwork artwork-6">
+            <svg viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="480" height="300" fill="url(#g6)"/>
+              <defs><linearGradient id="g6" x1="0" y1="0" x2="480" y2="300"><stop offset="0%" stop-color="#1a2a3a"/><stop offset="50%" stop-color="#3a6a8a"/><stop offset="100%" stop-color="#1a2a3a"/></linearGradient></defs>
+              <rect x="60" y="50" width="160" height="200" rx="4" stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="rgba(255,255,255,0.03)"/>
+              <rect x="80" y="70" width="120" height="8" rx="4" fill="rgba(255,255,255,0.1)"/>
+              <rect x="80" y="90" width="100" height="5" rx="2" fill="rgba(255,255,255,0.06)"/>
+              <rect x="80" y="103" width="80" height="5" rx="2" fill="rgba(255,255,255,0.05)"/>
+              <rect x="80" y="116" width="90" height="5" rx="2" fill="rgba(255,255,255,0.04)"/>
+              <rect x="80" y="140" width="60" height="60" rx="4" fill="rgba(255,255,255,0.04)"/>
+              <rect x="150" y="140" width="50" height="60" rx="4" fill="rgba(255,255,255,0.03)"/>
+              <rect x="260" y="50" width="160" height="200" rx="4" stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="rgba(255,255,255,0.03)"/>
+              <rect x="280" y="70" width="120" height="8" rx="4" fill="rgba(255,255,255,0.1)"/>
+              <rect x="280" y="90" width="100" height="5" rx="2" fill="rgba(255,255,255,0.06)"/>
+              <rect x="280" y="103" width="80" height="5" rx="2" fill="rgba(255,255,255,0.05)"/>
+              <circle cx="340" cy="180" r="30" stroke="rgba(255,255,255,0.06)" stroke-width="1" fill="rgba(255,255,255,0.02)"/>
+              <rect x="320" y="220" width="40" height="16" rx="8" fill="rgba(255,255,255,0.05)"/>
+            </svg>
+          </div>
+          <div class="project-card__body">
+            <span class="project-card__category">内容设计</span>
+            <h3 class="project-card__title">组织文化资讯</h3>
+            <p class="project-card__desc">资讯速递小报、生日与周年员工关怀项目视觉，从需求文档到设计交付的全流程参与。</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-component="project-card">
+          <div class="project-card__artwork artwork-7">
+            <svg viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="480" height="300" fill="url(#g7)"/>
+              <defs><linearGradient id="g7" x1="0" y1="0" x2="480" y2="300"><stop offset="0%" stop-color="#2a1a2a"/><stop offset="50%" stop-color="#5a3a5a"/><stop offset="100%" stop-color="#2a1a2a"/></linearGradient></defs>
+              <circle cx="240" cy="130" r="60" stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="rgba(255,255,255,0.03)"/>
+              <path d="M220 130 L240 110 L260 130 L240 150 Z" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="rgba(255,255,255,0.05)"/>
+              <circle cx="240" cy="130" r="80" stroke="rgba(255,255,255,0.04)" stroke-width="1" fill="none" stroke-dasharray="6 6"/>
+              <rect x="140" y="220" width="200" height="36" rx="18" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="rgba(255,255,255,0.03)"/>
+              <rect x="170" y="232" width="40" height="6" rx="3" fill="rgba(255,255,255,0.1)"/>
+              <circle cx="230" cy="235" r="3" fill="rgba(255,255,255,0.08)"/>
+              <rect x="245" y="232" width="30" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+              <rect x="290" y="232" width="20" height="6" rx="3" fill="rgba(255,255,255,0.04)"/>
+              <circle cx="120" cy="80" r="16" stroke="rgba(255,255,255,0.06)" stroke-width="1" fill="none"/>
+              <circle cx="360" cy="80" r="12" stroke="rgba(255,255,255,0.04)" stroke-width="1" fill="none"/>
+            </svg>
+          </div>
+          <div class="project-card__body">
+            <span class="project-card__category">社媒运营</span>
+            <h3 class="project-card__title">社媒运营设计</h3>
+            <p class="project-card__desc">小红书账号从0到1运营，累计2800+粉丝与4600+获赞与收藏，覆盖招聘与品牌传播场景。</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal reveal-delay-1" data-component="project-card">
+          <div class="project-card__artwork artwork-8">
+            <svg viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="480" height="300" fill="url(#g8)"/>
+              <defs><linearGradient id="g8" x1="0" y1="0" x2="480" y2="300"><stop offset="0%" stop-color="#1a3a2a"/><stop offset="50%" stop-color="#2a7a4a"/><stop offset="100%" stop-color="#1a3a2a"/></linearGradient></defs>
+              <rect x="180" y="30" width="120" height="240" rx="8" stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="rgba(255,255,255,0.04)"/>
+              <rect x="195" y="50" width="90" height="8" rx="4" fill="rgba(255,255,255,0.1)"/>
+              <rect x="195" y="70" width="90" height="80" rx="4" fill="rgba(255,255,255,0.06)"/>
+              <rect x="195" y="160" width="60" height="5" rx="2" fill="rgba(255,255,255,0.06)"/>
+              <rect x="195" y="172" width="80" height="5" rx="2" fill="rgba(255,255,255,0.05)"/>
+              <rect x="195" y="184" width="40" height="5" rx="2" fill="rgba(255,255,255,0.04)"/>
+              <rect x="195" y="210" width="90" height="20" rx="4" fill="rgba(255,255,255,0.05)"/>
+              <rect x="60" y="60" width="90" height="180" rx="6" stroke="rgba(255,255,255,0.06)" stroke-width="1" fill="rgba(255,255,255,0.02)" transform="rotate(-5 105 150)"/>
+              <rect x="330" y="60" width="90" height="180" rx="6" stroke="rgba(255,255,255,0.06)" stroke-width="1" fill="rgba(255,255,255,0.02)" transform="rotate(5 375 150)"/>
+            </svg>
+          </div>
+          <div class="project-card__body">
+            <span class="project-card__category">社媒运营</span>
+            <h3 class="project-card__title">推文长图设计</h3>
+            <p class="project-card__desc">多日活动类与互动宣传类长图，结合叙事节奏与信息层级，适配社交媒体传播需求。</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-component="project-card">
+          <div class="project-card__artwork artwork-9">
+            <svg viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="480" height="300" fill="url(#g9)"/>
+              <defs>
+                <linearGradient id="g9" x1="0" y1="0" x2="480" y2="300"><stop offset="0%" stop-color="#0a1a3a"/><stop offset="40%" stop-color="#1a4a8a"/><stop offset="100%" stop-color="#0a2a5a"/></linearGradient>
+                <radialGradient id="glow9" cx="50%" cy="40%" r="40%"><stop offset="0%" stop-color="rgba(100,180,255,0.15)"/><stop offset="100%" stop-color="rgba(100,180,255,0)"/></radialGradient>
+              </defs>
+              <rect width="480" height="300" fill="url(#glow9)"/>
+              <ellipse cx="240" cy="120" rx="80" ry="40" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="rgba(255,255,255,0.03)"/>
+              <path d="M200 120 Q220 80 260 100 Q300 120 280 140 Q260 160 220 140 Q200 130 200 120" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="rgba(255,255,255,0.04)"/>
+              <circle cx="160" cy="200" r="3" fill="rgba(255,255,255,0.15)"/>
+              <circle cx="200" cy="220" r="2" fill="rgba(255,255,255,0.1)"/>
+              <circle cx="280" cy="210" r="4" fill="rgba(255,255,255,0.12)"/>
+              <circle cx="320" cy="190" r="2" fill="rgba(255,255,255,0.08)"/>
+              <circle cx="350" cy="230" r="3" fill="rgba(255,255,255,0.1)"/>
+              <circle cx="140" cy="160" r="2" fill="rgba(255,255,255,0.06)"/>
+              <rect x="180" y="240" width="120" height="24" rx="12" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="rgba(255,255,255,0.03)"/>
+              <rect x="200" y="248" width="80" height="6" rx="3" fill="rgba(255,255,255,0.08)"/>
+            </svg>
+          </div>
+          <div class="project-card__body">
+            <span class="project-card__category">AIGC 创意</span>
+            <h3 class="project-card__title">鲸歌 AIGC × VR</h3>
+            <p class="project-card__desc">沉浸式VR叙事体验，使用Blender建模、ChatGPT生成脚本、Unity搭建交互，探索AIGC赋能设计的可能性。</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal reveal-delay-1" data-component="project-card">
+          <div class="project-card__artwork artwork-10">
+            <svg viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="480" height="300" fill="url(#g10)"/>
+              <defs><linearGradient id="g10" x1="0" y1="0" x2="480" y2="300"><stop offset="0%" stop-color="#3a0a0a"/><stop offset="50%" stop-color="#5a1a1a"/><stop offset="100%" stop-color="#1a0a0a"/></linearGradient></defs>
+              <rect x="80" y="40" width="320" height="220" rx="4" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="rgba(255,255,255,0.02)"/>
+              <rect x="100" y="60" width="120" height="160" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <rect x="240" y="60" width="140" height="75" rx="4" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <rect x="240" y="145" width="140" height="75" rx="4" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <circle cx="160" cy="120" r="20" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="rgba(255,255,255,0.04)"/>
+              <line x1="120" y1="170" x2="200" y2="170" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <line x1="130" y1="185" x2="190" y2="185" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+              <path d="M300 90 L310 80 L320 90 L330 82 L340 90" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>
+              <rect x="260" y="165" width="100" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
+              <rect x="260" y="180" width="70" height="6" rx="3" fill="rgba(255,255,255,0.04)"/>
+            </svg>
+          </div>
+          <div class="project-card__body">
+            <span class="project-card__category">时尚设计</span>
+            <h3 class="project-card__title">时尚穿搭设计</h3>
+            <p class="project-card__desc">《红与黑 · 爱与危险》主题摄影与ROWAN品牌情绪板，探索色彩叙事与时尚造型的结合。</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="section-divider"></div>
+
+  <!-- ===== Timeline ===== -->
+  <section class="timeline-section" id="experience" data-component="timeline">
+    <div class="container container--narrow">
+      <div class="section-label reveal">
+        <span class="t-label">经历 / Experience</span>
+      </div>
+      <div class="timeline">
+
+        <div class="timeline__item reveal">
+          <div class="timeline__dot"></div>
+          <div class="timeline__period">2022.09 — 2024.11</div>
+          <h3 class="timeline__title">设计学习与校园实践</h3>
+          <p class="timeline__desc">在校期间探索视觉设计、品牌设计、时尚穿搭等多元方向，完成从基础技能到项目实践的积累，逐步建立个人设计方法论。</p>
+        </div>
+
+        <div class="timeline__item reveal">
+          <div class="timeline__dot"></div>
+          <div class="timeline__period">2025.07 — 2025.11</div>
+          <h3 class="timeline__title">社媒运营实践</h3>
+          <p class="timeline__desc">独立运营小红书账号，从0到1积累2800+粉丝。通过内容策划、数据分析与用户反馈持续优化内容策略，深入理解传播逻辑与用户需求。</p>
+        </div>
+
+        <div class="timeline__item reveal">
+          <div class="timeline__dot"></div>
+          <div class="timeline__period">2026.04 — 至今</div>
+          <h3 class="timeline__title">卓驭科技 · 设计岗</h3>
+          <p class="timeline__desc">负责企业品牌物料设计、活动视觉（含海外顶会）、邀请函、校招礼盒包装及组织文化项目，参与从需求分析到设计交付的全流程。</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="section-divider"></div>
+
+  <!-- ===== Skills ===== -->
+  <section class="skills" id="skills" data-component="skills">
+    <div class="container">
+      <div class="section-label reveal">
+        <span class="t-label">能力 / Skills</span>
+      </div>
+      <div class="skills__grid">
+
+        <div class="reveal">
+          <h4 class="skills__group-title">设计能力</h4>
+          <div class="skills__tags">
+            <span class="skill-tag">视觉设计</span>
+            <span class="skill-tag">UI / UX 设计</span>
+            <span class="skill-tag">品牌设计</span>
+            <span class="skill-tag">包装设计</span>
+            <span class="skill-tag">印刷品设计</span>
+            <span class="skill-tag">社媒视觉</span>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-1">
+          <h4 class="skills__group-title">工具</h4>
+          <div class="skills__tags">
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">Blender</span>
+            <span class="skill-tag">Unity</span>
+            <span class="skill-tag">ChatGPT</span>
+            <span class="skill-tag">Photoshop</span>
+            <span class="skill-tag">Illustrator</span>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-2">
+          <h4 class="skills__group-title">创意方向</h4>
+          <div class="skills__tags">
+            <span class="skill-tag">AIGC 工作流</span>
+            <span class="skill-tag">3D 建模</span>
+            <span class="skill-tag">VR 交互</span>
+            <span class="skill-tag">时尚造型</span>
+            <span class="skill-tag">内容策划</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="section-divider"></div>
+
+  <!-- ===== Contact ===== -->
+  <section class="contact" id="contact" data-component="contact">
+    <div class="container">
+      <div class="section-label reveal" style="justify-content: center;">
+        <span class="t-label">联系 / Contact</span>
+      </div>
+      <h2 class="contact__headline reveal reveal-delay-1">一起创造<em>好设计</em></h2>
+      <div class="reveal reveal-delay-2">
+        <a href="mailto:jiemin.ji@example.com" class="contact__email">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="M22 4L12 13L2 4"/>
+          </svg>
+          jiemin.ji@example.com
+        </a>
+      </div>
+      <div class="contact__socials reveal reveal-delay-3">
+        <button class="contact__social-link" aria-label="小红书" onclick="void(0)">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+            <path d="M8 12h8M12 8v8"/>
+          </svg>
+        </button>
+        <button class="contact__social-link" aria-label="Behance" onclick="void(0)">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 12h7a3.5 3.5 0 1 0 0-7H3v14h8a4 4 0 1 0 0-8"/>
+            <path d="M16 8h6M19 8v10"/>
+          </svg>
+        </button>
+        <button class="contact__social-link" aria-label="Dribbble" onclick="void(0)">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72M19.13 5.09C15.22 9.14 10.93 10.44 2.64 10.96M21.75 12.84c-6.62-1.41-12.14 1-16.38 6.32"/>
+          </svg>
+        </button>
+        <button class="contact__social-link" aria-label="WeChat" onclick="void(0)">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 3C5.13 3 2 5.69 2 9c0 1.83 1.03 3.47 2.64 4.57L4 16l2.69-1.34C7.75 14.88 8.86 15 10 15c.34 0 .67-.02 1-.05"/>
+            <path d="M15 9c-3.31 0-6 2.24-6 5s2.69 5 6 5c.93 0 1.81-.18 2.61-.5L20 20l-.5-2C20.97 16.95 22 15.57 22 14c0-2.76-2.69-5-6-5h-1z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer" data-component="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <span class="footer__text">&copy; 2026 纪洁敏. All rights reserved.</span>
+        <button class="footer__back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top &uarr;</button>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ===== IntersectionObserver for scroll reveal ===== */
+    (function() {
+      const reveals = document.querySelectorAll('.reveal');
+      if (!reveals.length) return;
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        reveals.forEach(function(el) { el.classList.add('visible'); });
+        return;
+      }
+
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      reveals.forEach(function(el) { observer.observe(el); });
+    })();
+
+    /* ===== Navigation scroll state ===== */
+    (function() {
+      var nav = document.getElementById('nav');
+      if (!nav) return;
+
+      var lastScroll = 0;
+      window.addEventListener('scroll', function() {
+        var scrollY = window.scrollY || window.pageYOffset;
+        if (scrollY > 60) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+        lastScroll = scrollY;
+      }, { passive: true });
+    })();
+
+    /* ===== Smooth scroll for nav links ===== */
+    document.querySelectorAll('.nav__links a[href^="#"]').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          var offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height')) || 64;
+          var top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
