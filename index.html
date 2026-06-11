@@ -968,6 +968,85 @@
       color: var(--accent);
     }
 
+    /* ===== Lightbox ===== */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .lightbox.is-active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox__backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      cursor: pointer;
+    }
+
+    .lightbox__content {
+      position: relative;
+      z-index: 1;
+      max-width: 90vw;
+      max-height: 85vh;
+      transform: scale(0.92);
+      transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .lightbox.is-active .lightbox__content {
+      transform: scale(1);
+    }
+
+    .lightbox__img {
+      display: block;
+      max-width: 100%;
+      max-height: 85vh;
+      width: auto;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+      object-fit: contain;
+    }
+
+    .lightbox__close {
+      position: absolute;
+      top: -44px;
+      right: -4px;
+      width: 36px;
+      height: 36px;
+      border: none;
+      background: rgba(255,255,255,0.15);
+      color: #ffffff;
+      font-size: 22px;
+      line-height: 1;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s ease;
+      font-family: var(--font-body);
+      padding: 0;
+    }
+
+    .lightbox__close:hover {
+      background: rgba(255,255,255,0.25);
+    }
+
+    /* Project card cursor hint */
+    .project-card__artwork {
+      cursor: pointer;
+    }
+
     /* ===== Responsive ===== */
 
     /* ===== SVG Artwork Tokens (consumed by project card illustrations) ===== */
@@ -1484,6 +1563,15 @@
     </div>
   </footer>
 
+  <!-- ===== Lightbox ===== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="图片预览">
+    <div class="lightbox__backdrop"></div>
+    <div class="lightbox__content">
+      <button class="lightbox__close" aria-label="关闭">&times;</button>
+      <img class="lightbox__img" src="" alt="作品大图">
+    </div>
+  </div>
+
   <script>
     /* ===== IntersectionObserver for scroll reveal ===== */
     (function() {
@@ -1539,6 +1627,50 @@
         }
       });
     });
+
+    /* ===== Lightbox for project images ===== */
+    (function() {
+      var lightbox = document.getElementById('lightbox');
+      if (!lightbox) return;
+
+      var lbImg = lightbox.querySelector('.lightbox__img');
+      var lbClose = lightbox.querySelector('.lightbox__close');
+      var lbBackdrop = lightbox.querySelector('.lightbox__backdrop');
+
+      function openLightbox(src, alt) {
+        lbImg.src = src;
+        lbImg.alt = alt || '作品大图';
+        lightbox.classList.add('is-active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('is-active');
+        document.body.style.overflow = '';
+        setTimeout(function() { lbImg.src = ''; }, 350);
+      }
+
+      /* Bind click to all project card artwork images */
+      document.querySelectorAll('.project-card__artwork img').forEach(function(img) {
+        img.addEventListener('click', function(e) {
+          e.stopPropagation();
+          openLightbox(this.src, this.alt);
+        });
+      });
+
+      /* Close on backdrop click */
+      lbBackdrop.addEventListener('click', closeLightbox);
+
+      /* Close on X button */
+      lbClose.addEventListener('click', closeLightbox);
+
+      /* Close on Escape key */
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('is-active')) {
+          closeLightbox();
+        }
+      });
+    })();
   </script>
 </body>
 </html>
