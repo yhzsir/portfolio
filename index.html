@@ -227,7 +227,6 @@
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
     .reveal-delay-4 { transition-delay: 0.4s; }
 
     @media (prefers-reduced-motion: reduce) {
@@ -374,6 +373,13 @@
       margin-bottom: 40px;
     }
 
+    .hero__accent-line {
+      width: 48px;
+      height: 1px;
+      background: linear-gradient(to right, var(--accent), var(--accent-warm));
+      margin: 0 auto 40px;
+    }
+
     .hero__title {
       font-family: var(--font-body);
       font-size: 15px;
@@ -511,6 +517,46 @@
       font-weight: 500;
     }
 
+    .about__stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 48px;
+      border-top: 1px solid var(--border);
+    }
+
+    .about__stat {
+      padding: 28px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .about__stat:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 28px;
+      bottom: 28px;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .about__stat-value {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 400;
+      color: var(--fg);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .about__stat-label {
+      font-size: 12px;
+      color: var(--fg-muted);
+      letter-spacing: 0.04em;
+    }
+
     /* ===== Projects ===== */
     .projects {
       padding: var(--space-section) 0;
@@ -532,7 +578,7 @@
     .projects__grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      gap: 32px;
       margin-top: 56px;
     }
 
@@ -542,11 +588,63 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       overflow: hidden;
-      transition: border-color 0.4s ease;
+      transition: border-color 0.4s ease, transform 0.4s ease;
     }
 
     .project-card:hover {
       border-color: var(--border-strong);
+      transform: translateY(-2px);
+    }
+
+    .project-card__index {
+      position: absolute;
+      top: 16px;
+      left: 20px;
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-style: italic;
+      color: rgba(255,255,255,0.5);
+      z-index: 2;
+      letter-spacing: 0.02em;
+    }
+
+    .project-card--featured {
+      grid-column: 1 / -1;
+    }
+
+    .project-card--featured .project-card__inner {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 0;
+    }
+
+    .project-card--featured .project-card__artwork {
+      aspect-ratio: auto;
+      height: 100%;
+      min-height: 320px;
+      border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+    }
+
+    .project-card--featured .project-card__body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px 44px;
+    }
+
+    .project-card--featured .project-card__title {
+      font-size: 22px;
+    }
+
+    .project-card--featured .project-card__desc {
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .project-card__inner {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     .project-card__artwork {
@@ -554,11 +652,20 @@
       width: 100%;
       aspect-ratio: 16 / 10;
       overflow: hidden;
-      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    .project-card:hover .project-card__artwork {
-      transform: scale(1.03);
+    .project-card__artwork::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(11,11,11,0.35) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+    }
+
+    .project-card:hover .project-card__artwork::after {
+      opacity: 1;
     }
 
     .project-card__artwork img {
@@ -566,10 +673,18 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .project-card:hover .project-card__artwork img {
+      transform: scale(1.05);
     }
 
     .project-card__body {
       padding: 24px 28px 28px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .project-card__category {
@@ -627,7 +742,7 @@
 
     .timeline__item {
       position: relative;
-      padding-bottom: 56px;
+      padding-bottom: 48px;
     }
 
     .timeline__item:last-child {
@@ -656,6 +771,18 @@
       height: 5px;
       border-radius: 50%;
       background: var(--accent);
+    }
+
+    .timeline__content {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+      transition: border-color 0.3s ease;
+    }
+
+    .timeline__content:hover {
+      border-color: var(--border-strong);
     }
 
     .timeline__period {
@@ -782,7 +909,14 @@
       display: flex;
       justify-content: center;
       gap: 24px;
-      margin-top: 8px;
+      margin-top: 32px;
+    }
+
+    .contact__phone {
+      font-size: 14px;
+      color: var(--fg-muted);
+      letter-spacing: 0.02em;
+      margin-top: 24px;
     }
 
     .contact__social-link {
@@ -881,9 +1015,36 @@
 
       .about__divider { display: none; }
 
+      .about__stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0;
+      }
+
+      .about__stat:nth-child(2)::after {
+        display: none;
+      }
+
+      .about__stat:nth-child(1),
+      .about__stat:nth-child(2) {
+        border-bottom: 1px solid var(--border);
+      }
+
       .projects__grid {
         grid-template-columns: 1fr;
         gap: 20px;
+      }
+
+      .project-card--featured .project-card__inner {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card--featured .project-card__artwork {
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        min-height: 220px;
+      }
+
+      .project-card--featured .project-card__body {
+        padding: 24px 28px 28px;
       }
 
       .skills__grid {
@@ -898,6 +1059,18 @@
 
       .nav__links { gap: 20px; }
       .nav__links a { font-size: 12px; }
+
+      .timeline {
+        padding-left: 40px;
+      }
+
+      .timeline__dot {
+        left: -36px;
+      }
+
+      .timeline__content {
+        padding: 20px 24px;
+      }
 
       .footer__inner {
         flex-direction: column;
@@ -922,9 +1095,17 @@
         content: '';
       }
 
+      .about__stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .contact__email {
         padding: 14px 24px;
         font-size: 14px;
+      }
+
+      .contact__headline {
+        font-size: clamp(28px, 7vw, 40px);
       }
     }
   </style>
@@ -961,6 +1142,7 @@
     <div class="hero__content">
       <h1 class="hero__name-en reveal">JIE MIN JI</h1>
       <p class="hero__name-cn reveal reveal-delay-1">纪 洁 敏</p>
+      <div class="hero__accent-line reveal reveal-delay-2"></div>
       <p class="hero__title reveal reveal-delay-2">
         产品与视觉设计师<span>/</span>品牌运营
       </p>
@@ -991,6 +1173,24 @@
           <p>擅长使用 Midjourney、Stable Diffusion、ChatGPT 等 AIGC 工具赋能设计流程，精通 PS、AI、AE、Blender、Zbrush 等设计软件。</p>
         </div>
       </div>
+      <div class="about__stats reveal reveal-delay-3">
+        <div class="about__stat">
+          <div class="about__stat-value">4.01</div>
+          <div class="about__stat-label">GPA / 专业前2%</div>
+        </div>
+        <div class="about__stat">
+          <div class="about__stat-value">3</div>
+          <div class="about__stat-label">段企业实习</div>
+        </div>
+        <div class="about__stat">
+          <div class="about__stat-value">5</div>
+          <div class="about__stat-label">次奖学金</div>
+        </div>
+        <div class="about__stat">
+          <div class="about__stat-value">10+</div>
+          <div class="about__stat-label">设计工具</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1005,113 +1205,143 @@
       </div>
       <div class="projects__grid">
 
-        <article class="project-card reveal" data-component="project-card">
-          <div class="project-card__artwork artwork-1">
-            <img src="images/p1-brand.jpg" alt="项目作品预览" loading="lazy">
-          </div>
-          <div class="project-card__body">
-            <span class="project-card__category">品牌物料</span>
-            <h3 class="project-card__title">自变量物料设计</h3>
-            <p class="project-card__desc">入职报屏、邮件Banner及KT指引等全套入职物料视觉体系，涵盖新人引导流程的完整触点设计。</p>
-          </div>
-        </article>
-
-        <article class="project-card reveal reveal-delay-1" data-component="project-card">
-          <div class="project-card__artwork artwork-2">
-            <img src="images/p2-conference.jpg" alt="项目作品预览" loading="lazy">
-          </div>
-          <div class="project-card__body">
-            <span class="project-card__category">活动视觉</span>
-            <h3 class="project-card__title">海外顶会视觉</h3>
-            <p class="project-card__desc">CVPR 2024 Denver 系列活动卡片、X-Night邀请函及现场物料，覆盖线上推广到线下体验全链路。</p>
+        <article class="project-card project-card--featured reveal" data-component="project-card">
+          <div class="project-card__inner">
+            <div class="project-card__artwork artwork-1">
+              <span class="project-card__index">01</span>
+              <img src="images/p1-brand.jpg" alt="自变量物料设计 — 品牌入职物料视觉体系" loading="lazy">
+            </div>
+            <div class="project-card__body">
+              <span class="project-card__category">品牌物料</span>
+              <h3 class="project-card__title">自变量物料设计</h3>
+              <p class="project-card__desc">入职报屏、邮件Banner及KT指引等全套入职物料视觉体系，涵盖新人引导流程的完整触点设计。</p>
+            </div>
           </div>
         </article>
 
-        <article class="project-card reveal" data-component="project-card">
-          <div class="project-card__artwork artwork-3">
-            <img src="images/p3-invitation.jpg" alt="项目作品预览" loading="lazy">
-          </div>
-          <div class="project-card__body">
-            <span class="project-card__category">邀请函</span>
-            <h3 class="project-card__title">卓驭邀请函设计</h3>
-            <p class="project-card__desc">2025 All Hands Meeting 多风格邀请函及 X COFFEE 触觉专场闭门会视觉系统。</p>
-          </div>
-        </article>
-
-        <article class="project-card reveal reveal-delay-1" data-component="project-card">
-          <div class="project-card__artwork artwork-4">
-            <img src="images/p4-brochure.jpg" alt="项目作品预览" loading="lazy">
-          </div>
-          <div class="project-card__body">
-            <span class="project-card__category">印刷品</span>
-            <h3 class="project-card__title">商务折页设计</h3>
-            <p class="project-card__desc">AI产业多面板商务折页，涵盖电商智能客服、AI机器人解决方案及行业应用案例。</p>
+        <article class="project-card project-card--featured reveal" data-component="project-card">
+          <div class="project-card__inner">
+            <div class="project-card__artwork artwork-2">
+              <span class="project-card__index">02</span>
+              <img src="images/p2-conference.jpg" alt="海外顶会视觉 — CVPR 2024 活动全案" loading="lazy">
+            </div>
+            <div class="project-card__body">
+              <span class="project-card__category">活动视觉</span>
+              <h3 class="project-card__title">海外顶会视觉</h3>
+              <p class="project-card__desc">CVPR 2024 Denver 系列活动卡片、X-Night邀请函及现场物料，覆盖线上推广到线下体验全链路。</p>
+            </div>
           </div>
         </article>
 
         <article class="project-card reveal" data-component="project-card">
-          <div class="project-card__artwork artwork-5">
-            <img src="images/p5-giftbox.jpg" alt="项目作品预览" loading="lazy">
-          </div>
-          <div class="project-card__body">
-            <span class="project-card__category">包装设计</span>
-            <h3 class="project-card__title">校园伴手礼盒</h3>
-            <p class="project-card__desc">SZTU地标元素礼盒设计，从概念到打样的0到1全流程参与，融合校园文化与品牌视觉。</p>
+          <div class="project-card__inner">
+            <div class="project-card__artwork artwork-3">
+              <span class="project-card__index">03</span>
+              <img src="images/p3-invitation.jpg" alt="卓驭邀请函设计" loading="lazy">
+            </div>
+            <div class="project-card__body">
+              <span class="project-card__category">邀请函</span>
+              <h3 class="project-card__title">卓驭邀请函设计</h3>
+              <p class="project-card__desc">2025 All Hands Meeting 多风格邀请函及 X COFFEE 触觉专场闭门会视觉系统。</p>
+            </div>
           </div>
         </article>
 
         <article class="project-card reveal reveal-delay-1" data-component="project-card">
-          <div class="project-card__artwork artwork-6">
-            <img src="images/p6-culture.jpg" alt="项目作品预览" loading="lazy">
-          </div>
-          <div class="project-card__body">
-            <span class="project-card__category">内容设计</span>
-            <h3 class="project-card__title">组织文化资讯</h3>
-            <p class="project-card__desc">资讯速递小报、生日与周年员工关怀项目视觉，从需求文档到设计交付的全流程参与。</p>
+          <div class="project-card__inner">
+            <div class="project-card__artwork artwork-4">
+              <span class="project-card__index">04</span>
+              <img src="images/p4-brochure.jpg" alt="商务折页设计" loading="lazy">
+            </div>
+            <div class="project-card__body">
+              <span class="project-card__category">印刷品</span>
+              <h3 class="project-card__title">商务折页设计</h3>
+              <p class="project-card__desc">AI产业多面板商务折页，涵盖电商智能客服、AI机器人解决方案及行业应用案例。</p>
+            </div>
           </div>
         </article>
 
         <article class="project-card reveal" data-component="project-card">
-          <div class="project-card__artwork artwork-7">
-            <img src="images/p7-care.jpg" alt="项目作品预览" loading="lazy">
-          </div>
-          <div class="project-card__body">
-            <span class="project-card__category">社媒运营</span>
-            <h3 class="project-card__title">社媒运营设计</h3>
-            <p class="project-card__desc">小红书账号从0到1运营，累计2800+粉丝与4600+获赞与收藏，覆盖招聘与品牌传播场景。</p>
+          <div class="project-card__inner">
+            <div class="project-card__artwork artwork-5">
+              <span class="project-card__index">05</span>
+              <img src="images/p5-giftbox.jpg" alt="校园伴手礼盒" loading="lazy">
+            </div>
+            <div class="project-card__body">
+              <span class="project-card__category">包装设计</span>
+              <h3 class="project-card__title">校园伴手礼盒</h3>
+              <p class="project-card__desc">SZTU地标元素礼盒设计，从概念到打样的0到1全流程参与，融合校园文化与品牌视觉。</p>
+            </div>
           </div>
         </article>
 
         <article class="project-card reveal reveal-delay-1" data-component="project-card">
-          <div class="project-card__artwork artwork-8">
-            <img src="images/p8-social.jpg" alt="项目作品预览" loading="lazy">
-          </div>
-          <div class="project-card__body">
-            <span class="project-card__category">社媒运营</span>
-            <h3 class="project-card__title">推文长图设计</h3>
-            <p class="project-card__desc">多日活动类与互动宣传类长图，结合叙事节奏与信息层级，适配社交媒体传播需求。</p>
+          <div class="project-card__inner">
+            <div class="project-card__artwork artwork-6">
+              <span class="project-card__index">06</span>
+              <img src="images/p6-culture.jpg" alt="组织文化资讯" loading="lazy">
+            </div>
+            <div class="project-card__body">
+              <span class="project-card__category">内容设计</span>
+              <h3 class="project-card__title">组织文化资讯</h3>
+              <p class="project-card__desc">资讯速递小报、生日与周年员工关怀项目视觉，从需求文档到设计交付的全流程参与。</p>
+            </div>
           </div>
         </article>
 
         <article class="project-card reveal" data-component="project-card">
-          <div class="project-card__artwork artwork-9">
-            <img src="images/p10-aigc.jpg" alt="项目作品预览" loading="lazy">
-          </div>
-          <div class="project-card__body">
-            <span class="project-card__category">AIGC 创意</span>
-            <h3 class="project-card__title">鲸歌 AIGC × VR</h3>
-            <p class="project-card__desc">沉浸式VR叙事体验，使用Blender建模、ChatGPT生成脚本、Unity搭建交互，探索AIGC赋能设计的可能性。</p>
+          <div class="project-card__inner">
+            <div class="project-card__artwork artwork-7">
+              <span class="project-card__index">07</span>
+              <img src="images/p7-care.jpg" alt="社媒运营设计" loading="lazy">
+            </div>
+            <div class="project-card__body">
+              <span class="project-card__category">社媒运营</span>
+              <h3 class="project-card__title">社媒运营设计</h3>
+              <p class="project-card__desc">小红书账号从0到1运营，累计2800+粉丝与4600+获赞与收藏，覆盖招聘与品牌传播场景。</p>
+            </div>
           </div>
         </article>
 
         <article class="project-card reveal reveal-delay-1" data-component="project-card">
-          <div class="project-card__artwork artwork-10">
-            <img src="images/p11-fashion.jpg" alt="项目作品预览" loading="lazy">
+          <div class="project-card__inner">
+            <div class="project-card__artwork artwork-8">
+              <span class="project-card__index">08</span>
+              <img src="images/p8-social.jpg" alt="推文长图设计" loading="lazy">
+            </div>
+            <div class="project-card__body">
+              <span class="project-card__category">社媒运营</span>
+              <h3 class="project-card__title">推文长图设计</h3>
+              <p class="project-card__desc">多日活动类与互动宣传类长图，结合叙事节奏与信息层级，适配社交媒体传播需求。</p>
+            </div>
           </div>
-          <div class="project-card__body">
-            <span class="project-card__category">时尚设计</span>
-            <h3 class="project-card__title">时尚穿搭设计</h3>
-            <p class="project-card__desc">《红与黑 · 爱与危险》主题摄影与ROWAN品牌情绪板，探索色彩叙事与时尚造型的结合。</p>
+        </article>
+
+        <article class="project-card reveal" data-component="project-card">
+          <div class="project-card__inner">
+            <div class="project-card__artwork artwork-9">
+              <span class="project-card__index">09</span>
+              <img src="images/p10-aigc.jpg" alt="鲸歌 AIGC × VR" loading="lazy">
+            </div>
+            <div class="project-card__body">
+              <span class="project-card__category">AIGC 创意</span>
+              <h3 class="project-card__title">鲸歌 AIGC × VR</h3>
+              <p class="project-card__desc">沉浸式VR叙事体验，使用Blender建模、ChatGPT生成脚本、Unity搭建交互，探索AIGC赋能设计的可能性。</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal reveal-delay-1" data-component="project-card">
+          <div class="project-card__inner">
+            <div class="project-card__artwork artwork-10">
+              <span class="project-card__index">10</span>
+              <img src="images/p11-fashion.jpg" alt="时尚穿搭设计" loading="lazy">
+            </div>
+            <div class="project-card__body">
+              <span class="project-card__category">时尚设计</span>
+              <h3 class="project-card__title">时尚穿搭设计</h3>
+              <p class="project-card__desc">《红与黑 · 爱与危险》主题摄影与ROWAN品牌情绪板，探索色彩叙事与时尚造型的结合。</p>
+            </div>
           </div>
         </article>
 
@@ -1131,30 +1361,38 @@
 
         <div class="timeline__item reveal">
           <div class="timeline__dot"></div>
-          <div class="timeline__period">2022.09 — 2026.07</div>
-          <h3 class="timeline__title">深圳技术大学 · 艺术与科技（学士）</h3>
-          <p class="timeline__desc">GPA 4.01，专业排名前2%。累计获得奖学金5次，获评优秀毕业生。专业方向涵盖品牌视觉设计、AIGC创意、VR交互与时尚穿搭，建立跨领域设计能力体系。</p>
+          <div class="timeline__content">
+            <div class="timeline__period">2022.09 — 2026.07</div>
+            <h3 class="timeline__title">深圳技术大学 · 艺术与科技（学士）</h3>
+            <p class="timeline__desc">GPA 4.01，专业排名前2%。累计获得奖学金5次，获评优秀毕业生。专业方向涵盖品牌视觉设计、AIGC创意、VR交互与时尚穿搭，建立跨领域设计能力体系。</p>
+          </div>
         </div>
 
         <div class="timeline__item reveal">
           <div class="timeline__dot"></div>
-          <div class="timeline__period">2025.02 — 2025.07</div>
-          <h3 class="timeline__title">TCL集团 · 品牌运营/企业文化 实习</h3>
-          <p class="timeline__desc">独立完成公司主题物料设计，对接15家供应商的材质与工艺，控制成本落地5款周边产品（笔芯、背包等），在保证品质前提下单件成本降低约12%。参与策划200人规模团建活动，负责全部宣传物料设计与现场协调。撰写发布8篇活动文案，平均阅读量300+。</p>
+          <div class="timeline__content">
+            <div class="timeline__period">2025.02 — 2025.07</div>
+            <h3 class="timeline__title">TCL集团 · 品牌运营/企业文化 实习</h3>
+            <p class="timeline__desc">独立完成公司主题物料设计，对接15家供应商的材质与工艺，控制成本落地5款周边产品（笔芯、背包等），在保证品质前提下单件成本降低约12%。参与策划200人规模团建活动，负责全部宣传物料设计与现场协调。撰写发布8篇活动文案，平均阅读量300+。</p>
+          </div>
         </div>
 
         <div class="timeline__item reveal">
           <div class="timeline__dot"></div>
-          <div class="timeline__period">2025.07 — 2025.11</div>
-          <h3 class="timeline__title">卓驭科技（大疆车载）· 雇主品牌运营 实习</h3>
-          <p class="timeline__desc">负责品牌视觉体系统筹设计，涵盖18条产品线视觉物料。运营小红书、公众号、脉脉等多平台雇主品牌账号，输出差异化内容策略。主导校招礼盒创意项目，设计长图、邀请函、展架等全链路物料，支持清华双选会、慕尼黑展会等重点品牌曝光活动。</p>
+          <div class="timeline__content">
+            <div class="timeline__period">2025.07 — 2025.11</div>
+            <h3 class="timeline__title">卓驭科技（大疆车载）· 雇主品牌运营 实习</h3>
+            <p class="timeline__desc">负责品牌视觉体系统筹设计，涵盖18条产品线视觉物料。运营小红书、公众号、脉脉等多平台雇主品牌账号，输出差异化内容策略。主导校招礼盒创意项目，设计长图、邀请函、展架等全链路物料，支持清华双选会、慕尼黑展会等重点品牌曝光活动。</p>
+          </div>
         </div>
 
         <div class="timeline__item reveal">
           <div class="timeline__dot"></div>
-          <div class="timeline__period">2026.04 — 至今</div>
-          <h3 class="timeline__title">阿里系机器人科技公司 · 产品与视觉设计 实习</h3>
-          <p class="timeline__desc">独立完成全案品牌视觉设计，覆盖线上/线下全场景触点。负责多平台内容运营（小红书、公众号、视频号），策划图文排版、撰写爆款互动内容。对接战略部门3条业务线，输出招聘/文化活动邀请函及PPT视觉方案，确保品牌视觉规范统一，累计交付20+设计方案。</p>
+          <div class="timeline__content">
+            <div class="timeline__period">2026.04 — 至今</div>
+            <h3 class="timeline__title">阿里系机器人科技公司 · 产品与视觉设计 实习</h3>
+            <p class="timeline__desc">独立完成全案品牌视觉设计，覆盖线上/线下全场景触点。负责多平台内容运营（小红书、公众号、视频号），策划图文排版、撰写爆款互动内容。对接战略部门3条业务线，输出招聘/文化活动邀请函及PPT视觉方案，确保品牌视觉规范统一，累计交付20+设计方案。</p>
+          </div>
         </div>
 
       </div>
@@ -1220,7 +1458,7 @@
   <!-- ===== Contact ===== -->
   <section class="contact" id="contact" data-component="contact">
     <div class="container">
-      <div class="section-label reveal" style="justify-content: center;">
+      <div class="section-label reveal" style="justify-content:center;">
         <span class="t-label">联系 / Contact</span>
       </div>
       <h2 class="contact__headline reveal reveal-delay-1">一起创造<em>好设计</em></h2>
@@ -1233,8 +1471,8 @@
           1207121832@qq.com
         </a>
       </div>
-      <div class="reveal reveal-delay-2" style="margin-top: 20px;">
-        <span class="t-small" style="color: var(--fg-muted);">电话 / 微信：15323725239</span>
+      <div class="reveal reveal-delay-2 contact__phone">
+        电话 / 微信：15323725239
       </div>
       <div class="contact__socials reveal reveal-delay-3">
         <button class="contact__social-link" aria-label="小红书" onclick="void(0)">
