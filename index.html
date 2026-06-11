@@ -652,6 +652,7 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      cursor: zoom-in;
       transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
@@ -1017,6 +1018,37 @@
       object-fit: contain;
     }
 
+    .lightbox__spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 40px;
+      height: 40px;
+      margin: -20px 0 0 -20px;
+      border: 3px solid rgba(255,255,255,0.2);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      display: none;
+    }
+
+    .lightbox.is-loading .lightbox__spinner {
+      display: block;
+    }
+
+    .lightbox.is-loading .lightbox__img {
+      opacity: 0;
+    }
+
+    .lightbox__img--loaded {
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
     .lightbox__close {
       position: absolute;
       top: -44px;
@@ -1257,7 +1289,7 @@
           <div class="project-card__inner">
             <div class="project-card__artwork artwork-1">
               <span class="project-card__index">01</span>
-              <img src="images/p1-brand.jpg" alt="自变量物料设计 — 品牌入职物料视觉体系" loading="lazy">
+              <img src="images/p1-brand.jpg" data-full="images/p1-brand-full.jpg" alt="自变量物料设计 — 品牌入职物料视觉体系" loading="lazy">
             </div>
             <div class="project-card__body">
               <span class="project-card__category">品牌物料</span>
@@ -1271,7 +1303,7 @@
           <div class="project-card__inner">
             <div class="project-card__artwork artwork-2">
               <span class="project-card__index">02</span>
-              <img src="images/p2-conference.jpg" alt="海外顶会视觉 — CVPR 2024 活动全案" loading="lazy">
+              <img src="images/p2-conference.jpg" data-full="images/p2-conference-full.jpg" alt="海外顶会视觉 — CVPR 2024 活动全案" loading="lazy">
             </div>
             <div class="project-card__body">
               <span class="project-card__category">活动视觉</span>
@@ -1285,7 +1317,7 @@
           <div class="project-card__inner">
             <div class="project-card__artwork artwork-3">
               <span class="project-card__index">03</span>
-              <img src="images/p3-invitation.jpg" alt="卓驭邀请函设计" loading="lazy">
+              <img src="images/p3-invitation.jpg" data-full="images/p3-invitation-full.jpg" alt="卓驭邀请函设计" loading="lazy">
             </div>
             <div class="project-card__body">
               <span class="project-card__category">邀请函</span>
@@ -1299,7 +1331,7 @@
           <div class="project-card__inner">
             <div class="project-card__artwork artwork-4">
               <span class="project-card__index">04</span>
-              <img src="images/p4-brochure.jpg" alt="商务折页设计" loading="lazy">
+              <img src="images/p4-brochure.jpg" data-full="images/p4-brochure-full.jpg" alt="商务折页设计" loading="lazy">
             </div>
             <div class="project-card__body">
               <span class="project-card__category">印刷品</span>
@@ -1313,7 +1345,7 @@
           <div class="project-card__inner">
             <div class="project-card__artwork artwork-5">
               <span class="project-card__index">05</span>
-              <img src="images/p5-giftbox.jpg" alt="校园伴手礼盒" loading="lazy">
+              <img src="images/p5-giftbox.jpg" data-full="images/p5-giftbox-full.jpg" alt="校园伴手礼盒" loading="lazy">
             </div>
             <div class="project-card__body">
               <span class="project-card__category">包装设计</span>
@@ -1327,7 +1359,7 @@
           <div class="project-card__inner">
             <div class="project-card__artwork artwork-6">
               <span class="project-card__index">06</span>
-              <img src="images/p6-culture.jpg" alt="组织文化资讯" loading="lazy">
+              <img src="images/p6-culture.jpg" data-full="images/p6-culture-full.jpg" alt="组织文化资讯" loading="lazy">
             </div>
             <div class="project-card__body">
               <span class="project-card__category">内容设计</span>
@@ -1341,7 +1373,7 @@
           <div class="project-card__inner">
             <div class="project-card__artwork artwork-7">
               <span class="project-card__index">07</span>
-              <img src="images/p7-care.jpg" alt="社媒运营设计" loading="lazy">
+              <img src="images/p7-care.jpg" data-full="images/p7-care-full.jpg" alt="社媒运营设计" loading="lazy">
             </div>
             <div class="project-card__body">
               <span class="project-card__category">社媒运营</span>
@@ -1355,7 +1387,7 @@
           <div class="project-card__inner">
             <div class="project-card__artwork artwork-8">
               <span class="project-card__index">08</span>
-              <img src="images/p8-social.jpg" alt="推文长图设计" loading="lazy">
+              <img src="images/p8-social.jpg" data-full="images/p8-social-full.jpg" alt="推文长图设计" loading="lazy">
             </div>
             <div class="project-card__body">
               <span class="project-card__category">社媒运营</span>
@@ -1369,7 +1401,7 @@
           <div class="project-card__inner">
             <div class="project-card__artwork artwork-9">
               <span class="project-card__index">09</span>
-              <img src="images/p10-aigc.jpg" alt="鲸歌 AIGC × VR" loading="lazy">
+              <img src="images/p10-aigc.jpg" data-full="images/p10-aigc-full.jpg" alt="鲸歌 AIGC × VR" loading="lazy">
             </div>
             <div class="project-card__body">
               <span class="project-card__category">AIGC 创意</span>
@@ -1383,7 +1415,7 @@
           <div class="project-card__inner">
             <div class="project-card__artwork artwork-10">
               <span class="project-card__index">10</span>
-              <img src="images/p11-fashion.jpg" alt="时尚穿搭设计" loading="lazy">
+              <img src="images/p11-fashion.jpg" data-full="images/p11-fashion-full.jpg" alt="时尚穿搭设计" loading="lazy">
             </div>
             <div class="project-card__body">
               <span class="project-card__category">时尚设计</span>
@@ -1568,6 +1600,7 @@
     <div class="lightbox__backdrop"></div>
     <div class="lightbox__content">
       <button class="lightbox__close" aria-label="关闭">&times;</button>
+      <div class="lightbox__spinner"></div>
       <img class="lightbox__img" src="" alt="作品大图">
     </div>
   </div>
@@ -1638,14 +1671,28 @@
       var lbBackdrop = lightbox.querySelector('.lightbox__backdrop');
 
       function openLightbox(src, alt) {
-        lbImg.src = src;
+        lightbox.classList.add('is-loading');
+        lbImg.classList.remove('lightbox__img--loaded');
         lbImg.alt = alt || '作品大图';
         lightbox.classList.add('is-active');
         document.body.style.overflow = 'hidden';
+        var preloader = new Image();
+        preloader.onload = function() {
+          lbImg.src = src;
+          lbImg.classList.add('lightbox__img--loaded');
+          lightbox.classList.remove('is-loading');
+        };
+        preloader.onerror = function() {
+          lbImg.src = src;
+          lbImg.classList.add('lightbox__img--loaded');
+          lightbox.classList.remove('is-loading');
+        };
+        preloader.src = src;
       }
 
       function closeLightbox() {
-        lightbox.classList.remove('is-active');
+        lightbox.classList.remove('is-active', 'is-loading');
+        lbImg.classList.remove('lightbox__img--loaded');
         document.body.style.overflow = '';
         setTimeout(function() { lbImg.src = ''; }, 350);
       }
@@ -1654,7 +1701,8 @@
       document.querySelectorAll('.project-card__artwork img').forEach(function(img) {
         img.addEventListener('click', function(e) {
           e.stopPropagation();
-          openLightbox(this.src, this.alt);
+          var fullSrc = this.getAttribute('data-full') || this.src;
+          openLightbox(fullSrc, this.alt);
         });
       });
 
