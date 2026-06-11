@@ -551,9 +551,10 @@
       transform: scale(1.03);
     }
 
-    .project-card__artwork svg {
+    .project-card__artwork img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
       display: block;
     }
 
@@ -591,17 +592,7 @@
       max-width: 52ch;
     }
 
-    /* Project card artwork styles — colors consumed from :root artwork tokens */
-    .artwork-1 { background: linear-gradient(135deg, var(--art-b1) 0%, var(--art-b2) 50%, var(--art-b1) 100%); }
-    .artwork-2 { background: linear-gradient(135deg, var(--art-p1) 0%, var(--art-p2) 50%, var(--art-p1) 100%); }
-    .artwork-3 { background: linear-gradient(135deg, var(--art-n1) 0%, var(--art-n2) 50%, var(--art-n1) 100%); }
-    .artwork-4 { background: linear-gradient(135deg, var(--art-t1) 0%, var(--art-t2) 50%, var(--art-t1) 100%); }
-    .artwork-5 { background: linear-gradient(135deg, var(--art-g1) 0%, var(--art-g2) 50%, var(--art-g1) 100%); }
-    .artwork-6 { background: linear-gradient(135deg, var(--art-c1) 0%, var(--art-c2) 50%, var(--art-c1) 100%); }
-    .artwork-7 { background: linear-gradient(135deg, var(--art-m1) 0%, var(--art-m2) 40%, var(--art-m1) 100%); }
-    .artwork-8 { background: linear-gradient(135deg, var(--art-e1) 0%, var(--art-e2) 50%, var(--art-e1) 100%); }
-    .artwork-9 { background: linear-gradient(135deg, var(--art-v1) 0%, var(--art-v2) 40%, var(--art-v3) 100%); }
-    .artwork-10 { background: linear-gradient(135deg, var(--art-r1) 0%, var(--art-r2) 50%, var(--art-r3) 100%); }
+    /* Project card artwork — real images replace SVG artwork */
 
     /* ===== Timeline ===== */
     .timeline-section {
@@ -1001,20 +992,7 @@
 
         <article class="project-card reveal" data-component="project-card">
           <div class="project-card__artwork artwork-1">
-            <svg viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="480" height="300" fill="url(#g1)"/>
-              <defs><linearGradient id="g1" x1="0" y1="0" x2="480" y2="300"><stop offset="0%" stop-color="#1a3a5c"/><stop offset="50%" stop-color="#2d6a9f"/><stop offset="100%" stop-color="#1a3a5c"/></linearGradient></defs>
-              <rect x="40" y="40" width="180" height="100" rx="4" stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="rgba(255,255,255,0.04)"/>
-              <rect x="60" y="60" width="100" height="8" rx="4" fill="rgba(255,255,255,0.12)"/>
-              <rect x="60" y="80" width="140" height="6" rx="3" fill="rgba(255,255,255,0.08)"/>
-              <rect x="60" y="100" width="80" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
-              <rect x="260" y="60" width="180" height="180" rx="4" stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="rgba(255,255,255,0.03)"/>
-              <circle cx="350" cy="150" r="30" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="rgba(255,255,255,0.05)"/>
-              <rect x="40" y="180" width="180" height="80" rx="4" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="rgba(255,255,255,0.03)"/>
-              <line x1="60" y1="200" x2="200" y2="200" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-              <line x1="60" y1="220" x2="170" y2="220" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-              <line x1="60" y1="240" x2="140" y2="240" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-            </svg>
+            <img src="images/p1-brand.jpg" alt="项目作品预览" loading="lazy">
           </div>
           <div class="project-card__body">
             <span class="project-card__category">品牌物料</span>
@@ -1025,16 +1003,7 @@
 
         <article class="project-card reveal reveal-delay-1" data-component="project-card">
           <div class="project-card__artwork artwork-2">
-            <svg viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="480" height="300" fill="url(#g2)"/>
-              <defs><linearGradient id="g2" x1="0" y1="0" x2="480" y2="300"><stop offset="0%" stop-color="#2a1a4a"/><stop offset="50%" stop-color="#5c3d8f"/><stop offset="100%" stop-color="#2a1a4a"/></linearGradient></defs>
-              <rect x="60" y="50" width="140" height="200" rx="6" stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="rgba(255,255,255,0.04)" transform="rotate(-3 130 150)"/>
-              <rect x="170" y="45" width="140" height="200" rx="6" stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="rgba(255,255,255,0.03)" transform="rotate(2 240 145)"/>
-              <rect x="290" y="55" width="140" height="200" rx="6" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="rgba(255,255,255,0.03)" transform="rotate(5 360 155)"/>
-              <circle cx="240" cy="150" r="40" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="none"/>
-              <circle cx="240" cy="150" r="60" stroke="rgba(255,255,255,0.04)" stroke-width="1" fill="none"/>
-              <text x="130" y="140" fill="rgba(255,255,255,0.08)" font-family="serif" font-size="24" font-style="italic">CVPR</text>
-            </svg>
+            <img src="images/p2-conference.jpg" alt="项目作品预览" loading="lazy">
           </div>
           <div class="project-card__body">
             <span class="project-card__category">活动视觉</span>
@@ -1045,19 +1014,7 @@
 
         <article class="project-card reveal" data-component="project-card">
           <div class="project-card__artwork artwork-3">
-            <svg viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="480" height="300" fill="url(#g3)"/>
-              <defs><linearGradient id="g3" x1="0" y1="0" x2="480" y2="300"><stop offset="0%" stop-color="#1a1a2e"/><stop offset="50%" stop-color="#2d2d5e"/><stop offset="100%" stop-color="#1a1a2e"/></linearGradient></defs>
-              <rect x="100" y="50" width="280" height="200" rx="4" stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="rgba(255,255,255,0.03)"/>
-              <line x1="100" y1="100" x2="380" y2="100" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-              <rect x="130" y="70" width="60" height="8" rx="4" fill="rgba(255,255,255,0.1)"/>
-              <rect x="130" y="130" width="200" height="6" rx="3" fill="rgba(255,255,255,0.08)"/>
-              <rect x="130" y="150" width="160" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
-              <rect x="130" y="170" width="120" height="6" rx="3" fill="rgba(255,255,255,0.04)"/>
-              <rect x="130" y="210" width="80" height="24" rx="12" stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="rgba(255,255,255,0.05)"/>
-              <polygon points="340,130 380,170 340,170" fill="rgba(255,255,255,0.06)"/>
-              <circle cx="360" cy="80" r="12" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="none"/>
-            </svg>
+            <img src="images/p3-invitation.jpg" alt="项目作品预览" loading="lazy">
           </div>
           <div class="project-card__body">
             <span class="project-card__category">邀请函</span>
@@ -1068,21 +1025,7 @@
 
         <article class="project-card reveal reveal-delay-1" data-component="project-card">
           <div class="project-card__artwork artwork-4">
-            <svg viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="480" height="300" fill="url(#g4)"/>
-              <defs><linearGradient id="g4" x1="0" y1="0" x2="480" y2="300"><stop offset="0%" stop-color="#0a2a2a"/><stop offset="50%" stop-color="#1a5a5a"/><stop offset="100%" stop-color="#0a2a2a"/></linearGradient></defs>
-              <rect x="40" y="40" width="120" height="220" rx="4" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="rgba(255,255,255,0.03)"/>
-              <rect x="180" y="40" width="120" height="220" rx="4" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="rgba(255,255,255,0.03)"/>
-              <rect x="320" y="40" width="120" height="220" rx="4" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="rgba(255,255,255,0.03)"/>
-              <line x1="160" y1="40" x2="180" y2="40" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="4 4"/>
-              <line x1="300" y1="40" x2="320" y2="40" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="4 4"/>
-              <rect x="60" y="70" width="80" height="6" rx="3" fill="rgba(255,255,255,0.1)"/>
-              <rect x="200" y="70" width="80" height="6" rx="3" fill="rgba(255,255,255,0.1)"/>
-              <rect x="340" y="70" width="80" height="6" rx="3" fill="rgba(255,255,255,0.1)"/>
-              <rect x="60" y="100" width="60" height="60" rx="4" fill="rgba(255,255,255,0.05)"/>
-              <rect x="200" y="100" width="60" height="60" rx="4" fill="rgba(255,255,255,0.05)"/>
-              <rect x="340" y="100" width="60" height="60" rx="4" fill="rgba(255,255,255,0.05)"/>
-            </svg>
+            <img src="images/p4-brochure.jpg" alt="项目作品预览" loading="lazy">
           </div>
           <div class="project-card__body">
             <span class="project-card__category">印刷品</span>
@@ -1093,19 +1036,7 @@
 
         <article class="project-card reveal" data-component="project-card">
           <div class="project-card__artwork artwork-5">
-            <svg viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="480" height="300" fill="url(#g5)"/>
-              <defs><linearGradient id="g5" x1="0" y1="0" x2="480" y2="300"><stop offset="0%" stop-color="#3a2a1a"/><stop offset="50%" stop-color="#8b6914"/><stop offset="100%" stop-color="#3a2a1a"/></linearGradient></defs>
-              <rect x="140" y="60" width="200" height="180" rx="8" stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="rgba(255,255,255,0.04)"/>
-              <rect x="160" y="80" width="160" height="30" rx="4" fill="rgba(255,255,255,0.06)"/>
-              <line x1="180" y1="95" x2="300" y2="95" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-              <rect x="170" y="130" width="60" height="80" rx="4" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-              <rect x="250" y="130" width="60" height="80" rx="4" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-              <circle cx="240" cy="170" r="20" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>
-              <path d="M232 170 L248 170 M240 162 L240 178" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-              <rect x="80" y="100" width="40" height="120" rx="4" stroke="rgba(255,255,255,0.06)" stroke-width="1" fill="rgba(255,255,255,0.02)"/>
-              <rect x="360" y="100" width="40" height="120" rx="4" stroke="rgba(255,255,255,0.06)" stroke-width="1" fill="rgba(255,255,255,0.02)"/>
-            </svg>
+            <img src="images/p5-giftbox.jpg" alt="项目作品预览" loading="lazy">
           </div>
           <div class="project-card__body">
             <span class="project-card__category">包装设计</span>
@@ -1116,23 +1047,7 @@
 
         <article class="project-card reveal reveal-delay-1" data-component="project-card">
           <div class="project-card__artwork artwork-6">
-            <svg viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="480" height="300" fill="url(#g6)"/>
-              <defs><linearGradient id="g6" x1="0" y1="0" x2="480" y2="300"><stop offset="0%" stop-color="#1a2a3a"/><stop offset="50%" stop-color="#3a6a8a"/><stop offset="100%" stop-color="#1a2a3a"/></linearGradient></defs>
-              <rect x="60" y="50" width="160" height="200" rx="4" stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="rgba(255,255,255,0.03)"/>
-              <rect x="80" y="70" width="120" height="8" rx="4" fill="rgba(255,255,255,0.1)"/>
-              <rect x="80" y="90" width="100" height="5" rx="2" fill="rgba(255,255,255,0.06)"/>
-              <rect x="80" y="103" width="80" height="5" rx="2" fill="rgba(255,255,255,0.05)"/>
-              <rect x="80" y="116" width="90" height="5" rx="2" fill="rgba(255,255,255,0.04)"/>
-              <rect x="80" y="140" width="60" height="60" rx="4" fill="rgba(255,255,255,0.04)"/>
-              <rect x="150" y="140" width="50" height="60" rx="4" fill="rgba(255,255,255,0.03)"/>
-              <rect x="260" y="50" width="160" height="200" rx="4" stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="rgba(255,255,255,0.03)"/>
-              <rect x="280" y="70" width="120" height="8" rx="4" fill="rgba(255,255,255,0.1)"/>
-              <rect x="280" y="90" width="100" height="5" rx="2" fill="rgba(255,255,255,0.06)"/>
-              <rect x="280" y="103" width="80" height="5" rx="2" fill="rgba(255,255,255,0.05)"/>
-              <circle cx="340" cy="180" r="30" stroke="rgba(255,255,255,0.06)" stroke-width="1" fill="rgba(255,255,255,0.02)"/>
-              <rect x="320" y="220" width="40" height="16" rx="8" fill="rgba(255,255,255,0.05)"/>
-            </svg>
+            <img src="images/p6-culture.jpg" alt="项目作品预览" loading="lazy">
           </div>
           <div class="project-card__body">
             <span class="project-card__category">内容设计</span>
@@ -1143,20 +1058,7 @@
 
         <article class="project-card reveal" data-component="project-card">
           <div class="project-card__artwork artwork-7">
-            <svg viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="480" height="300" fill="url(#g7)"/>
-              <defs><linearGradient id="g7" x1="0" y1="0" x2="480" y2="300"><stop offset="0%" stop-color="#2a1a2a"/><stop offset="50%" stop-color="#5a3a5a"/><stop offset="100%" stop-color="#2a1a2a"/></linearGradient></defs>
-              <circle cx="240" cy="130" r="60" stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="rgba(255,255,255,0.03)"/>
-              <path d="M220 130 L240 110 L260 130 L240 150 Z" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="rgba(255,255,255,0.05)"/>
-              <circle cx="240" cy="130" r="80" stroke="rgba(255,255,255,0.04)" stroke-width="1" fill="none" stroke-dasharray="6 6"/>
-              <rect x="140" y="220" width="200" height="36" rx="18" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="rgba(255,255,255,0.03)"/>
-              <rect x="170" y="232" width="40" height="6" rx="3" fill="rgba(255,255,255,0.1)"/>
-              <circle cx="230" cy="235" r="3" fill="rgba(255,255,255,0.08)"/>
-              <rect x="245" y="232" width="30" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
-              <rect x="290" y="232" width="20" height="6" rx="3" fill="rgba(255,255,255,0.04)"/>
-              <circle cx="120" cy="80" r="16" stroke="rgba(255,255,255,0.06)" stroke-width="1" fill="none"/>
-              <circle cx="360" cy="80" r="12" stroke="rgba(255,255,255,0.04)" stroke-width="1" fill="none"/>
-            </svg>
+            <img src="images/p7-care.jpg" alt="项目作品预览" loading="lazy">
           </div>
           <div class="project-card__body">
             <span class="project-card__category">社媒运营</span>
@@ -1167,19 +1069,7 @@
 
         <article class="project-card reveal reveal-delay-1" data-component="project-card">
           <div class="project-card__artwork artwork-8">
-            <svg viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="480" height="300" fill="url(#g8)"/>
-              <defs><linearGradient id="g8" x1="0" y1="0" x2="480" y2="300"><stop offset="0%" stop-color="#1a3a2a"/><stop offset="50%" stop-color="#2a7a4a"/><stop offset="100%" stop-color="#1a3a2a"/></linearGradient></defs>
-              <rect x="180" y="30" width="120" height="240" rx="8" stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="rgba(255,255,255,0.04)"/>
-              <rect x="195" y="50" width="90" height="8" rx="4" fill="rgba(255,255,255,0.1)"/>
-              <rect x="195" y="70" width="90" height="80" rx="4" fill="rgba(255,255,255,0.06)"/>
-              <rect x="195" y="160" width="60" height="5" rx="2" fill="rgba(255,255,255,0.06)"/>
-              <rect x="195" y="172" width="80" height="5" rx="2" fill="rgba(255,255,255,0.05)"/>
-              <rect x="195" y="184" width="40" height="5" rx="2" fill="rgba(255,255,255,0.04)"/>
-              <rect x="195" y="210" width="90" height="20" rx="4" fill="rgba(255,255,255,0.05)"/>
-              <rect x="60" y="60" width="90" height="180" rx="6" stroke="rgba(255,255,255,0.06)" stroke-width="1" fill="rgba(255,255,255,0.02)" transform="rotate(-5 105 150)"/>
-              <rect x="330" y="60" width="90" height="180" rx="6" stroke="rgba(255,255,255,0.06)" stroke-width="1" fill="rgba(255,255,255,0.02)" transform="rotate(5 375 150)"/>
-            </svg>
+            <img src="images/p8-social.jpg" alt="项目作品预览" loading="lazy">
           </div>
           <div class="project-card__body">
             <span class="project-card__category">社媒运营</span>
@@ -1190,24 +1080,7 @@
 
         <article class="project-card reveal" data-component="project-card">
           <div class="project-card__artwork artwork-9">
-            <svg viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="480" height="300" fill="url(#g9)"/>
-              <defs>
-                <linearGradient id="g9" x1="0" y1="0" x2="480" y2="300"><stop offset="0%" stop-color="#0a1a3a"/><stop offset="40%" stop-color="#1a4a8a"/><stop offset="100%" stop-color="#0a2a5a"/></linearGradient>
-                <radialGradient id="glow9" cx="50%" cy="40%" r="40%"><stop offset="0%" stop-color="rgba(100,180,255,0.15)"/><stop offset="100%" stop-color="rgba(100,180,255,0)"/></radialGradient>
-              </defs>
-              <rect width="480" height="300" fill="url(#glow9)"/>
-              <ellipse cx="240" cy="120" rx="80" ry="40" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="rgba(255,255,255,0.03)"/>
-              <path d="M200 120 Q220 80 260 100 Q300 120 280 140 Q260 160 220 140 Q200 130 200 120" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="rgba(255,255,255,0.04)"/>
-              <circle cx="160" cy="200" r="3" fill="rgba(255,255,255,0.15)"/>
-              <circle cx="200" cy="220" r="2" fill="rgba(255,255,255,0.1)"/>
-              <circle cx="280" cy="210" r="4" fill="rgba(255,255,255,0.12)"/>
-              <circle cx="320" cy="190" r="2" fill="rgba(255,255,255,0.08)"/>
-              <circle cx="350" cy="230" r="3" fill="rgba(255,255,255,0.1)"/>
-              <circle cx="140" cy="160" r="2" fill="rgba(255,255,255,0.06)"/>
-              <rect x="180" y="240" width="120" height="24" rx="12" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="rgba(255,255,255,0.03)"/>
-              <rect x="200" y="248" width="80" height="6" rx="3" fill="rgba(255,255,255,0.08)"/>
-            </svg>
+            <img src="images/p10-aigc.jpg" alt="项目作品预览" loading="lazy">
           </div>
           <div class="project-card__body">
             <span class="project-card__category">AIGC 创意</span>
@@ -1218,20 +1091,7 @@
 
         <article class="project-card reveal reveal-delay-1" data-component="project-card">
           <div class="project-card__artwork artwork-10">
-            <svg viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="480" height="300" fill="url(#g10)"/>
-              <defs><linearGradient id="g10" x1="0" y1="0" x2="480" y2="300"><stop offset="0%" stop-color="#3a0a0a"/><stop offset="50%" stop-color="#5a1a1a"/><stop offset="100%" stop-color="#1a0a0a"/></linearGradient></defs>
-              <rect x="80" y="40" width="320" height="220" rx="4" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="rgba(255,255,255,0.02)"/>
-              <rect x="100" y="60" width="120" height="160" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-              <rect x="240" y="60" width="140" height="75" rx="4" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-              <rect x="240" y="145" width="140" height="75" rx="4" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-              <circle cx="160" cy="120" r="20" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="rgba(255,255,255,0.04)"/>
-              <line x1="120" y1="170" x2="200" y2="170" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-              <line x1="130" y1="185" x2="190" y2="185" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-              <path d="M300 90 L310 80 L320 90 L330 82 L340 90" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>
-              <rect x="260" y="165" width="100" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
-              <rect x="260" y="180" width="70" height="6" rx="3" fill="rgba(255,255,255,0.04)"/>
-            </svg>
+            <img src="images/p11-fashion.jpg" alt="项目作品预览" loading="lazy">
           </div>
           <div class="project-card__body">
             <span class="project-card__category">时尚设计</span>
