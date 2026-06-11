@@ -1294,6 +1294,73 @@
         filter: none !important;
       }
     }
+
+    /* ===== Infinite Marquee ===== */
+    .marquee-section {
+      padding: 48px 0 64px;
+      overflow: hidden;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee-scroll 35s linear infinite;
+    }
+
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes marquee-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .marquee-item {
+      flex-shrink: 0;
+      margin: 0 10px;
+      text-align: center;
+    }
+
+    .marquee-item img {
+      width: 200px;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 10px;
+      display: block;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .marquee-item img:hover {
+      transform: scale(1.06);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+
+    .marquee-item span {
+      display: block;
+      font-size: 11px;
+      color: var(--fg-subtle);
+      margin-top: 6px;
+      font-family: var(--font-body);
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 768px) {
+      .marquee-item img {
+        width: 150px;
+        height: 100px;
+      }
+      .marquee-item span {
+        font-size: 10px;
+      }
+      .marquee-section {
+        padding: 32px 0 40px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1529,6 +1596,33 @@
         </article>
 
       </div>
+    </div>
+  </section>
+
+  <!-- ===== Infinite Marquee ===== -->
+  <section class="marquee-section">
+    <div class="marquee-track">
+      <div class="marquee-item"><img src="images/p1-brand.jpg" alt="品牌物料"><span>品牌物料</span></div>
+      <div class="marquee-item"><img src="images/p2-conference.jpg" alt="活动视觉"><span>活动视觉</span></div>
+      <div class="marquee-item"><img src="images/p3-invitation.jpg" alt="邀请函设计"><span>邀请函</span></div>
+      <div class="marquee-item"><img src="images/p4-brochure.jpg" alt="商务折页"><span>印刷品</span></div>
+      <div class="marquee-item"><img src="images/p5-giftbox.jpg" alt="礼盒设计"><span>包装设计</span></div>
+      <div class="marquee-item"><img src="images/p6-culture.jpg" alt="组织文化"><span>内容设计</span></div>
+      <div class="marquee-item"><img src="images/p7-care.jpg" alt="员工关怀"><span>员工关怀</span></div>
+      <div class="marquee-item"><img src="images/p8-social.jpg" alt="社媒运营"><span>社媒运营</span></div>
+      <div class="marquee-item"><img src="images/p10-aigc.jpg" alt="AIGC创意"><span>AIGC 创意</span></div>
+      <div class="marquee-item"><img src="images/p11-fashion.jpg" alt="时尚设计"><span>时尚设计</span></div>
+      <!-- 重复一组实现无缝循环 -->
+      <div class="marquee-item"><img src="images/p1-brand.jpg" alt="品牌物料"><span>品牌物料</span></div>
+      <div class="marquee-item"><img src="images/p2-conference.jpg" alt="活动视觉"><span>活动视觉</span></div>
+      <div class="marquee-item"><img src="images/p3-invitation.jpg" alt="邀请函设计"><span>邀请函</span></div>
+      <div class="marquee-item"><img src="images/p4-brochure.jpg" alt="商务折页"><span>印刷品</span></div>
+      <div class="marquee-item"><img src="images/p5-giftbox.jpg" alt="礼盒设计"><span>包装设计</span></div>
+      <div class="marquee-item"><img src="images/p6-culture.jpg" alt="组织文化"><span>内容设计</span></div>
+      <div class="marquee-item"><img src="images/p7-care.jpg" alt="员工关怀"><span>员工关怀</span></div>
+      <div class="marquee-item"><img src="images/p8-social.jpg" alt="社媒运营"><span>社媒运营</span></div>
+      <div class="marquee-item"><img src="images/p10-aigc.jpg" alt="AIGC创意"><span>AIGC 创意</span></div>
+      <div class="marquee-item"><img src="images/p11-fashion.jpg" alt="时尚设计"><span>时尚设计</span></div>
     </div>
   </section>
 
