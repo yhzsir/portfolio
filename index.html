@@ -1295,64 +1295,6 @@
       50% { transform: translate(-8px, 10px) rotate(25deg); }
     }
 
-    /* 流星 */
-    .page-loader__meteor {
-      position: absolute;
-      height: 2px;
-      pointer-events: none;
-      opacity: 0;
-      z-index: 0;
-      background: linear-gradient(to left, transparent 0%, rgba(0,113,227,0.12) 30%, var(--accent) 75%, #fff 100%);
-      border-radius: 1px;
-      animation-name: meteorShoot;
-      animation-timing-function: cubic-bezier(0.12, 0.6, 0.3, 1);
-      animation-fill-mode: both;
-    }
-    .page-loader__meteor::before {
-      content: '';
-      position: absolute;
-      left: -5px;
-      right: auto;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 10px;
-      height: 10px;
-      background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(0,113,227,0.5) 55%, transparent 70%);
-      border-radius: 50%;
-    }
-    .page-loader__meteor::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: auto;
-      top: -1px;
-      width: 50%;
-      height: 4px;
-      background: linear-gradient(to left, transparent, rgba(0,113,227,0.25));
-      filter: blur(2px);
-    }
-
-    @keyframes meteorShoot {
-      0%   { transform: translate(-80px, 120px) rotate(-35deg); opacity: 0; }
-      6%   { opacity: 1; }
-      65%  { opacity: 0.6; }
-      100% { transform: translate(220px, -280px) rotate(-35deg); opacity: 0; }
-    }
-
-    @keyframes meteorShootWide {
-      0%   { transform: translate(-150px, 80px) rotate(-25deg); opacity: 0; }
-      6%   { opacity: 0.9; }
-      65%  { opacity: 0.5; }
-      100% { transform: translate(280px, -200px) rotate(-25deg); opacity: 0; }
-    }
-
-    @keyframes meteorShootSteep {
-      0%   { transform: translate(-50px, 150px) rotate(-50deg); opacity: 0; }
-      6%   { opacity: 1; }
-      65%  { opacity: 0.6; }
-      100% { transform: translate(160px, -350px) rotate(-50deg); opacity: 0; }
-    }
-
     /* 中心内容 */
     .page-loader__center {
       position: relative;
@@ -1493,8 +1435,7 @@
       .page-loader__shape,
       .page-loader__ring,
       .page-loader__line,
-      .page-loader__text,
-      .page-loader__meteor {
+      .page-loader__text {
         animation: none !important;
         opacity: 1 !important;
         transform: none !important;
@@ -1599,14 +1540,6 @@
         <div class="page-loader__line page-loader__line--right"></div>
       </div>
     </div>
-    <!-- 流星 — 从左下划向右上 -->
-    <span class="page-loader__meteor" style="top:62%;left:8%;width:100px;animation-duration:0.7s;animation-delay:0.15s;"></span>
-    <span class="page-loader__meteor" style="top:72%;left:18%;width:75px;animation-name:meteorShootWide;animation-duration:0.85s;animation-delay:0.3s;"></span>
-    <span class="page-loader__meteor" style="top:55%;left:5%;width:120px;animation-duration:0.6s;animation-delay:0.05s;"></span>
-    <span class="page-loader__meteor" style="top:80%;left:25%;width:85px;animation-name:meteorShootSteep;animation-duration:0.75s;animation-delay:0.4s;"></span>
-    <span class="page-loader__meteor" style="top:48%;left:15%;width:60px;animation-duration:0.8s;animation-delay:0.55s;"></span>
-    <span class="page-loader__meteor" style="top:68%;left:35%;width:95px;animation-name:meteorShootWide;animation-duration:0.65s;animation-delay:0.25s;"></span>
-    <span class="page-loader__meteor" style="top:58%;left:2%;width:110px;animation-duration:0.7s;animation-delay:0.48s;"></span>
   </div>
 
   <!-- ===== Navigation ===== -->
