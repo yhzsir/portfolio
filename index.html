@@ -1190,6 +1190,7 @@
       justify-content: center;
       transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                   visibility 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      overflow: hidden;
     }
 
     .page-loader.loaded {
@@ -1198,19 +1199,168 @@
       pointer-events: none;
     }
 
+    /* 点阵网格背景 */
+    .page-loader__grid {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(0,0,0,0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+      opacity: 0;
+      animation: loaderGridIn 1s ease 0.1s forwards;
+    }
+
+    @keyframes loaderGridIn {
+      to { opacity: 1; }
+    }
+
+    /* 浮动几何装饰 */
+    .page-loader__shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0;
+    }
+
+    .page-loader__shape--1 {
+      width: 180px;
+      height: 180px;
+      border: 1.5px solid var(--accent);
+      top: 12%;
+      left: 8%;
+      animation: loaderShapeIn 0.6s ease 0.2s forwards, loaderFloat1 6s ease-in-out infinite 0.2s;
+    }
+
+    .page-loader__shape--2 {
+      width: 90px;
+      height: 90px;
+      border: 1px solid var(--fg-subtle);
+      bottom: 18%;
+      right: 12%;
+      animation: loaderShapeIn 0.6s ease 0.35s forwards, loaderFloat2 7s ease-in-out infinite 0.35s;
+    }
+
+    .page-loader__shape--3 {
+      width: 6px;
+      height: 6px;
+      border-radius: 0;
+      background: var(--accent);
+      top: 28%;
+      right: 22%;
+      transform: rotate(45deg);
+      animation: loaderShapeIn 0.6s ease 0.5s forwards, loaderFloat3 5s ease-in-out infinite 0.5s;
+    }
+
+    .page-loader__shape--4 {
+      width: 44px;
+      height: 1px;
+      border-radius: 0;
+      background: var(--border-strong);
+      bottom: 32%;
+      left: 15%;
+      animation: loaderShapeIn 0.6s ease 0.45s forwards, loaderFloat4 8s ease-in-out infinite 0.45s;
+    }
+
+    .page-loader__shape--5 {
+      width: 24px;
+      height: 24px;
+      border: 1px solid var(--border-strong);
+      top: 65%;
+      left: 72%;
+      border-radius: 4px;
+      transform: rotate(15deg);
+      animation: loaderShapeIn 0.6s ease 0.55s forwards, loaderFloat5 9s ease-in-out infinite 0.55s;
+    }
+
+    @keyframes loaderShapeIn {
+      to { opacity: 0.5; }
+    }
+
+    @keyframes loaderFloat1 {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(12px, -18px) rotate(8deg); }
+    }
+    @keyframes loaderFloat2 {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(-10px, 14px) rotate(-10deg); }
+    }
+    @keyframes loaderFloat3 {
+      0%, 100% { transform: translate(0, 0) rotate(45deg); }
+      50% { transform: translate(8px, -10px) rotate(45deg); }
+    }
+    @keyframes loaderFloat4 {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(20px); }
+    }
+    @keyframes loaderFloat5 {
+      0%, 100% { transform: translate(0, 0) rotate(15deg); }
+      50% { transform: translate(-8px, 10px) rotate(25deg); }
+    }
+
+    /* 中心内容 */
+    .page-loader__center {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
     .page-loader__text {
       font-family: var(--font-display);
-      font-size: clamp(24px, 4vw, 40px);
+      font-size: clamp(28px, 5vw, 48px);
       font-weight: 600;
       color: var(--fg);
-      letter-spacing: 0.12em;
+      letter-spacing: 0.06em;
       opacity: 0;
       transform: translateY(8px);
-      animation: loaderTextIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      animation: loaderTextIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
     }
 
     @keyframes loaderTextIn {
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 文字两侧装饰线 */
+    .page-loader__line {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0;
+      animation: loaderLineIn 0.6s ease 0.5s forwards;
+    }
+
+    .page-loader__line--left { transform-origin: right center; }
+    .page-loader__line--right { transform-origin: left center; }
+
+    @keyframes loaderLineIn {
+      from { opacity: 0; transform: scaleX(0); }
+      to { opacity: 0.6; transform: scaleX(1); }
+    }
+
+    /* Hello 两侧容器 */
+    .page-loader__row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* 脉冲光环 */
+    .page-loader__ring {
+      width: 32px;
+      height: 32px;
+      border: 1.5px solid var(--accent);
+      border-radius: 50%;
+      opacity: 0;
+      animation: loaderRingIn 0.4s ease 0.7s forwards, loaderRingPulse 2s ease-in-out infinite 0.7s;
+    }
+
+    @keyframes loaderRingIn {
+      to { opacity: 0.4; }
+    }
+
+    @keyframes loaderRingPulse {
+      0%, 100% { transform: scale(1); opacity: 0.4; }
+      50% { transform: scale(1.25); opacity: 0.15; }
     }
 
     /* ===== Hero Entrance Animations ===== */
@@ -1281,6 +1431,15 @@
 
     @media (prefers-reduced-motion: reduce) {
       .page-loader { display: none; }
+      .page-loader__grid,
+      .page-loader__shape,
+      .page-loader__ring,
+      .page-loader__line,
+      .page-loader__text {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
       .hero__name-en,
       .hero__name-cn,
       .hero__accent-line,
@@ -1367,7 +1526,20 @@
 
   <!-- ===== Page Loader ===== -->
   <div class="page-loader" id="pageLoader">
-    <span class="page-loader__text">Hello</span>
+    <div class="page-loader__grid"></div>
+    <div class="page-loader__shape page-loader__shape--1"></div>
+    <div class="page-loader__shape page-loader__shape--2"></div>
+    <div class="page-loader__shape page-loader__shape--3"></div>
+    <div class="page-loader__shape page-loader__shape--4"></div>
+    <div class="page-loader__shape page-loader__shape--5"></div>
+    <div class="page-loader__center">
+      <div class="page-loader__ring"></div>
+      <div class="page-loader__row">
+        <div class="page-loader__line page-loader__line--left"></div>
+        <span class="page-loader__text">Hello</span>
+        <div class="page-loader__line page-loader__line--right"></div>
+      </div>
+    </div>
   </div>
 
   <!-- ===== Navigation ===== -->
