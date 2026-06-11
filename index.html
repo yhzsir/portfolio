@@ -10,28 +10,28 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* ===== Custom Properties — Apple Design Language ===== */
+    /* ===== Custom Properties — Apple Blue-White Design ===== */
     :root {
-      --seed-bg: #000000;
-      --seed-fg: #f5f5f7;
+      --seed-bg: #f5f5f7;
+      --seed-fg: #1d1d1f;
       --seed-primary: #0071e3;
-      --seed-accent: #2997ff;
-      --seed-surface: #1d1d1f;
+      --seed-accent: #0066cc;
+      --seed-surface: #ffffff;
       --seed-radius: 8;
 
       --bg: var(--seed-bg);
       --surface: var(--seed-surface);
-      --surface-elevated: #272729;
-      --surface-card: #161617;
+      --surface-elevated: #f0f0f5;
+      --surface-card: #ffffff;
       --fg: var(--seed-fg);
-      --fg-muted: #86868b;
-      --fg-subtle: #6e6e73;
-      --border: rgba(255,255,255,0.08);
-      --border-strong: rgba(255,255,255,0.16);
-      --border-apple: #424245;
+      --fg-muted: #6e6e73;
+      --fg-subtle: #86868b;
+      --border: rgba(0,0,0,0.06);
+      --border-strong: #d2d2d7;
+      --border-apple: #d2d2d7;
       --accent: var(--seed-primary);
-      --accent-light: var(--seed-accent);
-      --accent-warm: #86868b;
+      --accent-light: var(--seed-primary);
+      --accent-warm: #6e6e73;
 
       --font-display: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Noto Sans SC', sans-serif;
       --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
@@ -243,7 +243,7 @@
       }
     }
 
-    /* ===== Navigation — Apple compact translucent ===== */
+    /* ===== Navigation — Apple compact translucent (light) ===== */
     .nav {
       position: fixed;
       top: 0;
@@ -254,16 +254,16 @@
       display: flex;
       align-items: center;
       padding: 0 22px;
-      background-color: rgba(0,0,0,0.72);
+      background-color: rgba(245,245,247,0.72);
       backdrop-filter: saturate(180%) blur(20px);
       -webkit-backdrop-filter: saturate(180%) blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
       transition: background-color 0.4s ease;
     }
 
     .nav.scrolled {
-      background-color: rgba(0,0,0,0.88);
-      border-bottom-color: rgba(255,255,255,0.08);
+      background-color: rgba(245,245,247,0.92);
+      border-bottom-color: rgba(0,0,0,0.1);
     }
 
     .nav__inner {
@@ -367,10 +367,10 @@
 
     .hero__accent-line {
       width: 40px;
-      height: 2px;
-      background: var(--accent);
+      height: 3px;
+      background: linear-gradient(to right, var(--accent), #5ac8fa);
       margin: 0 auto 32px;
-      border-radius: 1px;
+      border-radius: 2px;
     }
 
     .hero__title {
@@ -560,14 +560,17 @@
     .project-card {
       position: relative;
       background: var(--surface);
-      border: none;
+      border: 1px solid var(--border);
       border-radius: var(--radius-xl);
       overflow: hidden;
-      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
 
     .project-card:hover {
-      transform: scale(1.01);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
     }
 
     .project-card__index {
@@ -577,9 +580,10 @@
       font-family: var(--font-display);
       font-size: 12px;
       font-weight: 600;
-      color: rgba(255,255,255,0.45);
+      color: rgba(255,255,255,0.7);
       z-index: 2;
       letter-spacing: -0.01em;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
     }
 
     .project-card--featured {
@@ -633,7 +637,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 40%);
+      background: linear-gradient(to top, rgba(0,0,0,0.15) 0%, transparent 40%);
       opacity: 0;
       transition: opacity 0.5s ease;
       pointer-events: none;
@@ -739,14 +743,16 @@
 
     .timeline__content {
       background: var(--surface);
-      border: none;
+      border: 1px solid var(--border);
       border-radius: var(--radius-xl);
       padding: 28px 32px;
-      transition: transform 0.3s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
 
     .timeline__content:hover {
       transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
     }
 
     .timeline__period {
@@ -815,14 +821,16 @@
       border: 1px solid var(--border-strong);
       border-radius: var(--radius-pill);
       padding: 6px 16px;
-      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease,
+                  box-shadow 0.3s ease;
       letter-spacing: -0.01em;
     }
 
     .skill-tag:hover {
       background: var(--surface-elevated);
       border-color: var(--accent);
-      color: var(--fg);
+      color: var(--accent);
+      box-shadow: 0 2px 8px rgba(0,113,227,0.1);
     }
 
     /* ===== Contact — Apple CTA ===== */
@@ -868,6 +876,7 @@
 
     .contact__email:hover {
       background: #0077ed;
+      box-shadow: 0 4px 16px rgba(0,113,227,0.3);
     }
 
     .contact__email svg {
@@ -956,7 +965,7 @@
     }
 
     .footer__back-top:hover {
-      color: var(--accent-light);
+      color: var(--accent);
     }
 
     /* ===== Responsive ===== */
