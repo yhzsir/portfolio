@@ -2123,12 +2123,12 @@
           if (entry.isIntersecting) {
             var items = entry.target.querySelectorAll('.about__stat-value[data-target]');
             items.forEach(function(el, i) {
-              setTimeout(function() { animateCount(el); }, i * 120);
+              setTimeout(function() { animateCount(el); }, 400 + i * 150);
             });
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.3 });
+      }, { threshold: 0.6, rootMargin: '0px 0px -60px 0px' });
 
       var statsSection = document.querySelector('.about__stats');
       if (statsSection) observer.observe(statsSection);
