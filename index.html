@@ -1597,19 +1597,19 @@
       </div>
       <div class="about__stats reveal reveal-delay-3">
         <div class="about__stat">
-          <div class="about__stat-value">4.01</div>
+          <div class="about__stat-value" data-target="4.01" data-decimals="2">0</div>
           <div class="about__stat-label">GPA / 专业前2%</div>
         </div>
         <div class="about__stat">
-          <div class="about__stat-value">3</div>
+          <div class="about__stat-value" data-target="3" data-decimals="0">0</div>
           <div class="about__stat-label">段企业实习</div>
         </div>
         <div class="about__stat">
-          <div class="about__stat-value">5</div>
+          <div class="about__stat-value" data-target="5" data-decimals="0">0</div>
           <div class="about__stat-label">次奖学金</div>
         </div>
         <div class="about__stat">
-          <div class="about__stat-value">10+</div>
+          <div class="about__stat-value" data-target="10" data-suffix="+" data-decimals="0">0</div>
           <div class="about__stat-label">设计工具</div>
         </div>
       </div>
@@ -2086,6 +2086,52 @@
           closeLightbox();
         }
       });
+    })();
+
+    /* ===== Stats Count-Up ===== */
+    (function() {
+      var statValues = document.querySelectorAll('.about__stat-value[data-target]');
+      if (!statValues.length) return;
+
+      function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+      function animateCount(el) {
+        var target = parseFloat(el.getAttribute('data-target'));
+        var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+        var suffix = el.getAttribute('data-suffix') || '';
+        var duration = 1400;
+        var start = performance.now();
+
+        function tick(now) {
+          var elapsed = now - start;
+          var progress = Math.min(elapsed / duration, 1);
+          var easedProgress = easeOutCubic(progress);
+          var current = easedProgress * target;
+          el.textContent = current.toFixed(decimals) + suffix;
+          if (progress < 1) {
+            requestAnimationFrame(tick);
+          } else {
+            el.textContent = target.toFixed(decimals) + suffix;
+          }
+        }
+
+        requestAnimationFrame(tick);
+      }
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var items = entry.target.querySelectorAll('.about__stat-value[data-target]');
+            items.forEach(function(el, i) {
+              setTimeout(function() { animateCount(el); }, i * 120);
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      var statsSection = document.querySelector('.about__stats');
+      if (statsSection) observer.observe(statsSection);
     })();
 
     /* ===== Page Loader ===== */
